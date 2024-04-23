@@ -1,0 +1,76 @@
+.s-login {
+  width: 100%;
+  height: calc(100% - 84px);
+  padding: 16px;
+}
+.s-login-title {
+  color: $--blue-3;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  margin-top: 16px;
+}
+.s-login-description {
+  font-family: Inter;
+  color: $--blue-grey;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.s-login-form {
+  padding: 20px 0 0;
+}
+.s-login-btn {
+  margin-top: 4px;
+  width: 100%;
+  height: 44px;
+  padding: 0px 12px 0px 12px;
+  gap: 10px;
+  border-radius: 100px;
+  background-color: $--blue-1;
+  color: $--white;
+  transition: all 0.25s ease-out;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+  &:not(.s-disabled-btn):hover,
+  &:not(.s-disabled-btn):focus,
+  &:not(.s-disabled-btn):active,
+  &:not(.s-disabled-btn):target {
+    filter: brightness(1.2);
+    box-shadow: 0px 2px 12px 0px rgba(5, 89, 253, 0.2);
+  }
+}
+.s-login-footer {
+  padding: 12px;
+  height: 24px;
+}
+
+.s-login-footer-span-1 {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: $--blue-grey;
+}
+
+.s-login-footer-span-2 {
+  margin-left: 5px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: $--blue-5;
+  text-decoration: underline;
+}

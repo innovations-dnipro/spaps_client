@@ -1,0 +1,19 @@
+.s-back {
+  height: 24px;
+  display: flex;
+  align-items: center;
+
+  .ph {
+    font-size: 24px;
+  }
+}
+
+.s-back-text {
+  padding-left: 4px;
+  color: $--blue-3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}

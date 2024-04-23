@@ -1,0 +1,24 @@
+import { AxiosError, type AxiosResponse } from 'axios';
+import { useToast } from 'vue-toastification';
+import { detectError } from './detect.error';
+
+export const ErrorInterceptor = (error: AxiosError): Promise<AxiosResponse> => {
+  const getJsonErrorData = error.toJSON();
+  const responseData = error?.response?.data || getJsonErrorData;
+
+  if (getJsonErrorData?.status === 401) {
+    // if (!import.meta.env.VITE_SERVER_AUTH.includes(window.location.host)) {
+    //   window.location.href = '';
+    // }
+
+    return Promise.reject(responseData);
+  }
+
+  if (process.browser && responseData?.message) {
+    const toast = useToast();
+
+    toast.error(detectError(responseData));
+  }
+
+  return Promise.reject(getJsonErrorData);
+};

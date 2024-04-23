@@ -1,0 +1,13 @@
+{
+  "extends": "../.nuxt/tsconfig.server.json",
+  "compilerOptions": {
+    "paths": {
+      "@spaps/core": [
+        "packages/core"
+      ],
+      "@spaps/api": [
+        "packages/api"
+      ]
+    }
+  }
+}

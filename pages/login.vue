@@ -15,9 +15,13 @@
     >
       <v-text-field
         v-model="formData.email"
-        :label="$t('login_messages.email')"
-        :placeholder="$t('login_messages.enter_your_email')"
-        :rules="[requiredValidator, emailValidator]"
+        :label="$t('input_messages.email')"
+        :placeholder="$t('input_messages.enter_your_email')"
+        :rules="[
+          requiredValidator,
+          emailValidator,
+          maxLengthValidator(formData.email, 255),
+        ]"
         :readonly="isLoading"
         class="mb-4"
         color="primary"
@@ -25,8 +29,8 @@
       ></v-text-field>
       <v-text-field
         v-model="formData.password"
-        :label="$t('login_messages.password')"
-        :placeholder="$t('login_messages.enter_your_password')"
+        :label="$t('input_messages.password')"
+        :placeholder="$t('input_messages.enter_your_password')"
         :rules="[
           requiredValidator,
           minLengthValidator(formData.password, 6),
@@ -42,7 +46,6 @@
       ></v-text-field>
       <button
         :disabled="isDisabled"
-        :loading="isLoading"
         class="s-login-btn"
         :class="isDisabled && 's-disabled-btn'"
       >
@@ -66,9 +69,8 @@
 
 <script lang="ts" setup>
 import { useApi } from '@spaps/api';
-import { useValidators } from '@spaps/composables/use.validators';
-import { isEmpty } from '@spaps/utils/is.empty';
-import { asyncGlobalSpinner } from '../packages/core/loading-worker/index';
+import { isEmpty } from '@spaps/utils';
+import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
 
 const {
   requiredValidator,
@@ -91,14 +93,15 @@ const isDisabled = computed(() => {
   return (
     isEmpty(formData.value.email) ||
     isEmpty(formData.value.password) ||
-    isLoading.value ||
-    !isValid.value
+    isLoading.value
   );
 });
 
 const onSubmit = async () => {
+  formData.value.email = formData.value.email.trim();
+  formData.value.password = formData.value.password.trim();
+
   const { valid } = await formRef.value.validate();
-  isValid.value = valid;
 
   if (!valid) {
     return;
@@ -109,13 +112,15 @@ const onSubmit = async () => {
   try {
     const response: unknown = await asyncGlobalSpinner(
       api.AuthorizationService.login({
-        email: formData.value.email,
-        password: formData.value.password,
+        data: {
+          email: formData.value.email,
+          password: formData.value.password,
+        },
       })
     );
 
     if (Array.isArray(response) && response?.length) {
-      router.push({ path: '/registration' });
+      router.push({ path: '/profile' });
     }
   } catch (e) {
     console.log(e);

@@ -12,8 +12,14 @@
       "@spaps/core": [
         "./packages/core"
       ],
+      "@spaps/enums": [
+        "./packages/core/enums"
+      ],
       "@spaps/i18n": [
         "./packages/i18n"
+      ],
+      "@spaps/types": [
+        "./packages/core/types"
       ],
       "@spaps/utils": [
         "./packages/utils"

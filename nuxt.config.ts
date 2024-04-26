@@ -9,7 +9,13 @@ export default defineNuxtConfig({
       new URL('./composables', import.meta.url)
     ),
     '@spaps/core': fileURLToPath(new URL('./packages/core', import.meta.url)),
+    '@spaps/enums': fileURLToPath(
+      new URL('./packages/core/enums', import.meta.url)
+    ),
     '@spaps/i18n': fileURLToPath(new URL('./packages/i18n', import.meta.url)),
+    '@spaps/types': fileURLToPath(
+      new URL('./packages/core/types', import.meta.url)
+    ),
     '@spaps/utils': fileURLToPath(new URL('./packages/utils', import.meta.url)),
     '@spaps/validators': fileURLToPath(
       new URL('./composables/useValidators', import.meta.url)
@@ -20,13 +26,13 @@ export default defineNuxtConfig({
     // "@/assets/styles/normalize.scss"
   ],
   // vite: {
-    // css: {
-    //   preprocessorOptions: {
-    //     sass: {
-    //       additionalData: '@import "@/assets/styles/_variables.scss"'
-    //     }
-    //   }
-    // }
+  // css: {
+  //   preprocessorOptions: {
+  //     sass: {
+  //       additionalData: '@import "@/assets/styles/_variables.scss"'
+  //     }
+  //   }
+  // }
   // },
   // sitemap: {
   //   strictNuxtContentPaths: true,

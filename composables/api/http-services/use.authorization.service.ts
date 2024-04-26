@@ -1,15 +1,22 @@
+import type { AxiosInstance } from 'axios';
 import { EndpointsEnum } from '../http-common/prefix.enum';
 import {
-  ServiceResponseType,
-  LoginInterface,
-  RLoginInterface,
-} from '@spaps/interfaces';
-import type { AxiosInstance } from 'axios';
+  type IParams,
+  type ILogin,
+  type IRegister,
+  type ServiceResponseType,
+  type ILoginResponse,
+  type IConfirmRegistrationCode,
+  type IPasswordResetConfirmCode,
+  type IPasswordReset,
+} from '../interfaces';
 
 export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
-  const login = (
-    data: LoginInterface
-  ): ServiceResponseType<RLoginInterface> => {
+  const login = ({
+    data,
+  }: {
+    data: ILogin;
+  }): ServiceResponseType<ILoginResponse> => {
     return axiosInstance.post(EndpointsEnum.Authorization.Login, data);
   };
 
@@ -17,8 +24,67 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     return axiosInstance.get(EndpointsEnum.Authorization.Logout);
   };
 
+  const register = ({
+    data,
+  }: {
+    data: IRegister;
+  }): ServiceResponseType<number /* boolean */> => {
+    return axiosInstance.post(EndpointsEnum.Authorization.Register, data);
+  };
+
+  const confirmRegistrationCode = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<boolean> => {
+    return axiosInstance.get(
+      EndpointsEnum.Authorization.ConfirmRegistrationCode(params)
+    );
+  };
+
+  const setPassword = ({
+    data,
+  }: {
+    data: IConfirmRegistrationCode;
+  }): ServiceResponseType<boolean> => {
+    return axiosInstance.post(EndpointsEnum.Authorization.SetPassword, data);
+  };
+
+  const providePasswordResetEmail = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number /* boolean */> => {
+    return axiosInstance.get(
+      EndpointsEnum.Authorization.PasswordResetEmail(params)
+    );
+  };
+
+  const providePasswordResetConfirmCode = ({
+    params,
+    data,
+  }: {
+    params: IParams;
+    data: IPasswordResetConfirmCode;
+  }): ServiceResponseType<boolean> => {
+    return axiosInstance.post(
+      EndpointsEnum.Authorization.PasswordResetConfirmCode(params),
+      data
+    );
+  };
+
+  const resetPassword = ({ data }: { data: IPasswordReset }) => {
+    return axiosInstance.post(EndpointsEnum.Authorization.PasswordReset, data);
+  };
+
   return {
     login,
     logout,
+    register,
+    confirmRegistrationCode,
+    setPassword,
+    providePasswordResetEmail,
+    providePasswordResetConfirmCode,
+    resetPassword,
   };
 };

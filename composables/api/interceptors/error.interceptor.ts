@@ -11,6 +11,13 @@ export const ErrorInterceptor = (error: AxiosError): Promise<AxiosResponse> => {
     //   window.location.href = '';
     // }
 
+    if (process.browser) {
+      const toast = useToast();
+      const { $i18n } = useNuxtApp();
+
+      toast.error($i18n.t('server_error_messages.UNAUTHORIZED'));
+    }
+
     return Promise.reject(responseData);
   }
 

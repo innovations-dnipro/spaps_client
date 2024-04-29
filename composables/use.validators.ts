@@ -3,16 +3,20 @@ import { isEmpty, isEmptyArray, isNullOrUndefined } from '@spaps/utils';
 export const useValidators = () => {
   const $i18n: any = useI18n();
 
-  // NOTE: Required Validator
-  const requiredValidator = (value: unknown) => {
-    if (isNullOrUndefined(value) || isEmptyArray(value) || value === false)
-      return $i18n.t('validation_error_messages.this_field_is_required');
+  // NOTE: Alpha Validator
+  const alphaValidator = (value: unknown) => {
+    if (isEmpty(value)) return true;
 
     return (
-      !!String(value).trim().length ||
-      $i18n.t('validation_error_messages.this_field_is_required')
+      /^[A-Z]*$/i.test(String(value)) ||
+      $i18n.t('validation_error_messages.only_alphabetic_characters')
     );
   };
+
+  // NOTE: Confirm Password Validator
+  const confirmedValidator = (value: string, target: string) =>
+    value === target ||
+    $i18n.t('validation_error_messages.password_confirmation_not_match');
 
   // NOTE: Email Validator
   const emailValidator = (value: unknown) => {
@@ -33,16 +37,19 @@ export const useValidators = () => {
     );
   };
 
-  // NOTE: Password Validator
-  const passwordValidator = (password: string) => {
-    const regExp = /^.{8,}$/;
-
-    const validPassword = regExp.test(password);
-
+  // NOTE: Length Validator
+  const maxLengthValidator = (
+    value: unknown,
+    length: number,
+    type = 'string'
+  ) => {
+    if (isEmpty(value)) return true;
+    let check;
+    if (type === 'string') check = String(value).length <= length;
+    if (type === 'number') check = +value <= length;
     return (
-      // eslint-disable-next-line operator-linebreak
-      validPassword ||
-      $i18n.t('validation_error_messages.password_requirements')
+      check ||
+      $i18n.t('validation_error_messages.max_length_must_be', { length })
     );
   };
 
@@ -64,27 +71,37 @@ export const useValidators = () => {
     );
   };
 
-  // NOTE: Length Validator
-  const maxLengthValidator = (
-    value: unknown,
-    length: number,
-    type = 'string'
-  ) => {
-    if (isEmpty(value)) return true;
-    let check;
-    if (type === 'string') check = String(value).length <= length;
-    if (type === 'number') check = +value <= length;
+  // NOTE: Password Validator
+  const passwordValidator = (password: string) => {
+    const regExp = /^.{8,}$/;
+
+    const validPassword = regExp.test(password);
+
     return (
-      check ||
-      $i18n.t('validation_error_messages.max_length_must_be', { length })
+      // eslint-disable-next-line operator-linebreak
+      validPassword ||
+      $i18n.t('validation_error_messages.password_requirements')
+    );
+  };
+
+  // NOTE: Required Validator
+  const requiredValidator = (value: unknown) => {
+    if (isNullOrUndefined(value) || isEmptyArray(value) || value === false)
+      return $i18n.t('validation_error_messages.this_field_is_required');
+
+    return (
+      !!String(value).trim().length ||
+      $i18n.t('validation_error_messages.this_field_is_required')
     );
   };
 
   return {
-    requiredValidator,
+    alphaValidator,
+    confirmedValidator,
     emailValidator,
-    passwordValidator,
     minLengthValidator,
     maxLengthValidator,
+    passwordValidator,
+    requiredValidator,
   };
 };

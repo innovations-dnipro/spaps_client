@@ -11,6 +11,7 @@ export const useAxiosInstance = () => {
   if (!axiosInstance) {
     axiosInstance = axios.create({
       baseURL: AXIOS_BASE_URL as string,
+      withCredentials: true,
     });
 
     axiosInstance.interceptors.request.use(UrlInterceptor);

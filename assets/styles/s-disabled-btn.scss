@@ -1,7 +1,14 @@
 .s-disabled-btn {
   background-color: $--grey;
+  color: $--white;
 }
 
 button.s-disabled-btn {
   background-color: $--grey;
+  color: $--white;
+
+  & span {
+    background-color: $--grey;
+    color: $--white;
+  }
 }

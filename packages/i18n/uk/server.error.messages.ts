@@ -1,4 +1,5 @@
 export const server_error_messages = {
+  UNAUTHORIZED: 'Неавторизований запит.',
   NAME_ALREADY_EXISTS: 'Елемент із такою назвою вже існує.',
   PHONE_ALREADY_EXISTS: 'Елемент із цим телефоном уже існує.',
   EMAIL_ALREADY_EXISTS: 'Елемент із цією електронною адресою вже існує.',

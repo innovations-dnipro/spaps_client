@@ -1,0 +1,89 @@
+.s-registration-toggle-container {
+  height: 36px;
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex: 1 0 0;
+  border-radius: 100px;
+  background: $--grey-3;
+}
+
+.s-registration-toggle-btn {
+  height: 28px;
+  width: 158px;
+  padding: 2px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  border-radius: 100px;
+  background-color: $--grey-3;
+
+  & span {
+    color: $--blue-3;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px;
+  }
+
+  &-selected {
+    background-color: $--blue-1;
+
+    & span {
+      color: $--white;
+    }
+  }
+}
+
+.s-registration-code-verification-container {
+  padding: 20px 0;
+}
+
+.s-registration-step-2-send-again {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & .s-registration-step-2-send-again-counter {
+    color: $--blue-3;
+    text-align: right;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.14px;
+
+    &-hidden {
+      display: none;
+    }
+
+    span {
+      margin: 0 4px;
+    }
+  }
+
+  & .s-registration-step-2-send-again-btn {
+    color: $--blue-3;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.14px;
+    text-decoration-line: underline;
+  }
+
+  & .s-registration-step-2-send-again-btn-disabled {
+    color: $--grey;
+  }
+}

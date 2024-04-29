@@ -1,6 +1,6 @@
 <template>
   <div class="s-back" @click="router.back()">
-    <i class="ph-arrow-circle-left ph"></i>
+    <i class="ph-caret-circle-left ph"></i>
     <div class="s-back-text">
       {{ $t('back_messages.back') }}
     </div>

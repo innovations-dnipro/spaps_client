@@ -1,0 +1,45 @@
+.v-input {
+  .v-field {
+    border-radius: 8px;
+  }
+
+  .v-field__outline {
+    border-radius: 0;
+
+    &::before {
+      border-width: 0 !important;
+    }
+
+    &::after {
+      border-radius: 0;
+    }
+  }
+
+  .v-field.v-field--focused .v-field__outline {
+    &::after {
+      border-radius: 8px;
+    }
+  }
+
+  .v-field--variant-filled .v-field__overlay {
+    background-color: $--white-3 !important;
+    opacity: 1 !important;
+  }
+
+  .v-label {
+    font-size: 14px;
+  }
+
+  .v-field-label--floating {
+    font-size: 0.65em !important;
+  }
+
+  .v-field__input {
+    font-size: 14px;
+    padding: 20px 16px 8px 16px;
+  }
+
+  .v-icon--size-default {
+    font-size: 20px;
+  }
+}

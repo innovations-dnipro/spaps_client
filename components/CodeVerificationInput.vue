@@ -25,10 +25,7 @@
 </template>
 <script lang="ts" setup>
 import { EKey, EKeyCode, ECode, EKeyEvent } from '@spaps/enums';
-import {
-  requestAnimationFrame,
-  cancelAnimationFrame,
-} from '@spaps/utils/request.animation.frame';
+import { raf, caf } from '@spaps/utils';
 
 const props = defineProps({
   value: String,
@@ -173,12 +170,12 @@ watch(
 
 onMounted(() => {
   if (input.value && props.focus && props.hasAutoFocus) {
-    initialAutofocus.value = requestAnimationFrame(triggerFocus);
+    initialAutofocus.value = raf(triggerFocus);
   }
 });
 onBeforeUnmount(() => {
   if (initialAutofocus.value) {
-    cancelAnimationFrame(initialAutofocus);
+    caf(initialAutofocus);
   }
 });
 </script>

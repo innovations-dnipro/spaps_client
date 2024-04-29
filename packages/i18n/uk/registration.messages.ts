@@ -11,4 +11,6 @@ export const registration_messages = {
   customer: 'Клієнт',
   rentor: 'Орендодавець',
   register: 'Зареєструватися',
+  sec: 'сек',
+  colon: ':',
 };

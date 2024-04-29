@@ -6,9 +6,26 @@
     <code-verification :inputAmount="5" @on-change="onChange" />
   </div>
   <div class="s-registration-step-2-send-again">
-    <button @click="onSendAgainButtonClick">
-      {{ $t('registration_messages.send_code_again') }}
+    <button
+      @click="onSendAgainButtonClick"
+      :disabled="!isCounterHidden"
+      class="s-registration-step-2-send-again-btn"
+      :class="{
+        's-registration-step-2-send-again-btn-disabled': !isCounterHidden,
+      }"
+    >
+      {{ $t('registration_messages.send_code_again')
+      }}{{ !isCounterHidden ? $t('registration_messages.colon') : '' }}
     </button>
+    <div
+      class="s-registration-step-2-send-again-counter"
+      :class="{
+        's-registration-step-2-send-again-counter-hidden': isCounterHidden,
+      }"
+    >
+      <span>{{ count }}</span
+      >{{ $t('registration_messages.sec') }}
+    </div>
   </div>
   <button
     :disabled="isDisabled"
@@ -31,6 +48,9 @@ const props = defineProps({
 const api = useApi();
 const code = ref('');
 const isDisabled = ref(false);
+const count = ref(60);
+const isCounterHidden = computed(() => count.value <= 0);
+const timer = ref(null);
 
 const emit = defineEmits(['change-step', 'submit-email']);
 const onChange = (value: string) => {
@@ -56,7 +76,41 @@ const onContinueButtonClick = async () => {
 
   isDisabled.value = false;
 };
-const onSendAgainButtonClick = () => {
-  emit('submit-email');
+const updateCounter = () => {
+  timer.value = setTimeout(() => {
+    count.value--;
+
+    if (count.value > 0) {
+      updateCounter();
+    }
+
+    if (count.value <= 0) {
+      clearTimeout(timer.value);
+    }
+  }, 1000);
 };
+const onSendAgainButtonClick = async () => {
+  if (!isCounterHidden.value) {
+    return;
+  }
+
+  await emit('submit-email');
+
+  count.value = 60;
+  updateCounter();
+};
+
+onMounted(() => {
+  updateCounter();
+});
+
+onUnmounted(() => {
+  if (count.value) {
+    count.value = 0;
+  }
+
+  if (timer?.value) {
+    clearInterval(timer.value);
+  }
+});
 </script>

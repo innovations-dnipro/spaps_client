@@ -48,7 +48,7 @@
       :placeholder="$t('input_messages.enter_your_name')"
       :rules="[
         requiredValidator,
-        alphaValidator,
+        nameValidator,
         maxLengthValidator(formData.name, 255),
       ]"
       :readonly="isLoading"
@@ -62,7 +62,7 @@
       :placeholder="$t('input_messages.enter_your_surname')"
       :rules="[
         requiredValidator,
-        alphaValidator,
+        nameValidator,
         maxLengthValidator(formData.surname, 255),
       ]"
       :readonly="isLoading"
@@ -86,12 +86,8 @@
 import { isEmpty } from '@spaps/utils';
 import { ENonAdminRole } from '@spaps/enums';
 
-const {
-  alphaValidator,
-  emailValidator,
-  maxLengthValidator,
-  requiredValidator,
-} = useValidators();
+const { nameValidator, emailValidator, maxLengthValidator, requiredValidator } =
+  useValidators();
 const formRef = ref();
 const isLoading = ref(false);
 const formData: Ref<{}> = ref({

@@ -71,6 +71,16 @@ export const useValidators = () => {
     );
   };
 
+  // NOTE: Name Validator
+  const nameValidator = (value: unknown) => {
+    if (isEmpty(value)) return true;
+
+    return (
+      /^[A-ZАБВГҐДЕЁЄЭЖЗІЇИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЮЯ'-]*$/i.test(String(value)) ||
+      $i18n.t('validation_error_messages.only_alphabetic_characters')
+    );
+  };
+
   // NOTE: Password Validator
   const passwordValidator = (password: string) => {
     const regExp = /^.{8,}$/;
@@ -101,6 +111,7 @@ export const useValidators = () => {
     emailValidator,
     minLengthValidator,
     maxLengthValidator,
+    nameValidator,
     passwordValidator,
     requiredValidator,
   };

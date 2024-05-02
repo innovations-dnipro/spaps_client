@@ -63,11 +63,7 @@ const onStepOneSubmitData = async (data?: IRegister) => {
 
   const response: unknown = await submitData();
 
-  if (
-    Array.isArray(response) &&
-    typeof response[0] === 'number' /*TODO: response[0] === true */ &&
-    data
-  ) {
+  if (Array.isArray(response) || (response?.[0] === true && data)) {
     onChangeStep(2);
   }
 };

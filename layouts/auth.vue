@@ -8,7 +8,7 @@
       <slot />
     </main>
     <footer>
-      <MainFooter />
+      <!-- <MainFooter /> -->
     </footer>
   </div>
 </template>

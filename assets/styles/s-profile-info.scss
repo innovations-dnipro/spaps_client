@@ -1,0 +1,23 @@
+.s-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.s-profile-info-title {
+  color: $--blue-3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.s-profile-info-line-three {
+  display: flex;
+  justify-content: space-between;
+
+  & > .v-input {
+    width: calc((100% - 16px) / 2);
+    max-width: calc((100% - 16px) / 2);
+  }
+}

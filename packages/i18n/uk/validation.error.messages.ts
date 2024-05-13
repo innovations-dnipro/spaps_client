@@ -18,4 +18,6 @@ export const validation_error_messages = {
   must_consist_of_numbers_only: 'Поле повинно складатися лише з цифр.',
   max: 'Максимум {count}.',
   min: 'Мінімум {count}.',
+  fileSizeMax: 'Розмір файлу не має перевищувати {size} Мб.',
+  fileType: 'Дозволені лише наступні типи файлів: {types}.',
 };

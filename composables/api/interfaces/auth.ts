@@ -35,3 +35,5 @@ export interface IPasswordResetConfirmCode {
 export interface IPasswordReset {
   password: string;
 }
+
+export interface IPostAvatar {}

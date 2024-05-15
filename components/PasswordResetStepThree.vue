@@ -19,7 +19,7 @@ const submitPassword = async (password: string) => {
       })
     );
 
-    if (Array.isArray(response) && response[0] === true) {
+    if (response === true) {
       router.push({ path: '/login' });
     }
   } catch (e) {

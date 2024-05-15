@@ -10,4 +10,11 @@ export const input_messages = {
   create_password: 'Придумайте пароль',
   repeate_password: 'Повторіть пароль',
   password_confirmation: 'Підтвердження пароля',
+  birth_date: 'Дата народження',
+  enter_your_birth_date: 'Введіть дату',
+  gender: 'Стать',
+  select_your_gender: 'Оберить вашу стать',
+  male: 'Чоловіча',
+  female: 'Жіноча',
+  other: 'Інше',
 };

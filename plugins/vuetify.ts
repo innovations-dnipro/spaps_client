@@ -1,14 +1,28 @@
-import { VApp, VForm, VInput, VTextField } from 'vuetify/components';
+import {
+  VApp,
+  VDialog,
+  VFileInput,
+  VForm,
+  VInput,
+  VSelect,
+  VTextField,
+} from 'vuetify/components';
+import { VDateInput } from 'vuetify/labs/VDateInput';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
+import { uk } from 'vuetify/locale';
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     components: {
       VApp,
+      VDateInput,
+      VDialog,
+      VFileInput,
       VForm,
       VInput,
+      VSelect,
       VTextField,
     },
     theme: {
@@ -21,6 +35,11 @@ export default defineNuxtPlugin((app) => {
           },
         },
       },
+    },
+    locale: {
+      locale: 'uk',
+      fallback: 'uk',
+      messages: { uk },
     },
   });
   app.vueApp.use(vuetify);

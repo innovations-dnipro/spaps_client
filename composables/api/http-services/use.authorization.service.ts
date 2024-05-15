@@ -12,6 +12,14 @@ import {
 } from '../interfaces';
 
 export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
+  const checkIsAuthorized = () => {
+    return axiosInstance.get(EndpointsEnum.Authorization.Authorized);
+  };
+
+  const getPersonalData = () => {
+    return axiosInstance.get(EndpointsEnum.Authorization.PersonalData);
+  };
+
   const login = ({
     data,
   }: {
@@ -78,6 +86,8 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
   };
 
   return {
+    checkIsAuthorized,
+    getPersonalData,
     login,
     logout,
     register,

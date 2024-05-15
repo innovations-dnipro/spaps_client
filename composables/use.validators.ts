@@ -37,6 +37,30 @@ export const useValidators = () => {
     );
   };
 
+  //NOTE: File size validator
+  const fileSizeValidator = (fileData: File | File[], size: number) => {
+    const file = Array.isArray(fileData) ? fileData[0] : fileData;
+    const fileSize: number = file?.size;
+    const mbSize = size / 1000000;
+
+    return (
+      size >= fileSize ||
+      $i18n.t('validation_error_messages.fileSizeMax', { size: mbSize })
+    );
+  };
+
+  //NOTE: File type validator
+  const fileTypeValidator = (fileData: File | File[], types: string[]) => {
+    const file = Array.isArray(fileData) ? fileData[0] : fileData;
+    const fileType: string = file?.type;
+    const typesString: string = types.join(', ');
+
+    return (
+      (types || []).includes(fileType) ||
+      $i18n.t('validation_error_messages.fileType', { types: typesString })
+    );
+  };
+
   // NOTE: Length Validator
   const maxLengthValidator = (
     value: unknown,
@@ -109,6 +133,8 @@ export const useValidators = () => {
     alphaValidator,
     confirmedValidator,
     emailValidator,
+    fileSizeValidator,
+    fileTypeValidator,
     minLengthValidator,
     maxLengthValidator,
     nameValidator,

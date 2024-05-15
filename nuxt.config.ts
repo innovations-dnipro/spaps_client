@@ -87,6 +87,7 @@ export default defineNuxtConfig({
     // '@nuxtjs/color-mode',
     // '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
+    '@pinia/nuxt',
     [
       '@nuxtjs/google-fonts',
       {
@@ -101,5 +102,12 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
   plugins: ['~/plugins/vuetify', '~/plugins/loader' /*'~/plugins/axios'*/],
+  routeRules: {
+    // '/profile/**': { ssr: false },
+    '/profile': { ssr: false },
+  },
 });

@@ -56,7 +56,7 @@ const onStepOneSubmit = async (email: string) => {
   savedEmail.value = email;
   const response = await submitEmail();
 
-  if (Array.isArray(response) || typeof response?.[0] === 'number' /**true */) {
+  if (Array.isArray(response) || response?.[0] === true) {
     onChangeStep(2);
   }
 };

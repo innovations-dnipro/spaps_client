@@ -62,7 +62,7 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     params,
   }: {
     params: IParams;
-  }): ServiceResponseType<number /* boolean */> => {
+  }): ServiceResponseType<number> => {
     return axiosInstance.get(
       EndpointsEnum.Authorization.PasswordResetEmail(params)
     );
@@ -85,7 +85,27 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     return axiosInstance.post(EndpointsEnum.Authorization.PasswordReset, data);
   };
 
+  const changeEmail = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.get(EndpointsEnum.Authorization.ChangeEmail(params));
+  };
+
+  const confirmEmailChangeCode = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.get(
+      EndpointsEnum.Authorization.ConfirmEmailChangeCode(params)
+    );
+  };
+
   return {
+    changeEmail,
+    confirmEmailChangeCode,
     checkIsAuthorized,
     getPersonalData,
     login,

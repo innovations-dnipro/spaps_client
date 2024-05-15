@@ -7,10 +7,12 @@ import { validation_error_messages } from './validation.error.messages';
 import { password_reset } from './password.reset.messages';
 import { profile_messages } from './profile.messages';
 import { date_input_messages } from './date.input.messages';
+import { email_change_messages } from './email.change';
 
 export const uk = {
   back_messages,
   date_input_messages,
+  email_change_messages,
   input_messages,
   login_messages,
   password_reset,

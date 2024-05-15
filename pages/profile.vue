@@ -6,6 +6,7 @@
     <div class="s-profile-main-container">
       <ProfileAvatar />
       <ProfilePersonalData />
+      <ProfileContactDetails />
     </div>
   </div>
 </template>

@@ -8,20 +8,6 @@
       <NuxtLink to="/registration"> reg </NuxtLink>
       <NuxtLink to="/login"> login </NuxtLink>
       <NuxtLink to="/profile"> profile </NuxtLink>
-      <button @click="logout">Logout</button>
     </div>
   </header>
 </template>
-<script lang="ts" setup>
-import { useApi } from '@spaps/api';
-import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
-
-const api = useApi();
-const userStore = useUserStore();
-
-const logout = async () => {
-  await asyncGlobalSpinner(api.AuthorizationService.logout());
-  userStore.updateUser(null);
-  navigateTo('/login');
-};
-</script>

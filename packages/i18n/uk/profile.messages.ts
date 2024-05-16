@@ -16,4 +16,6 @@ export const profile_messages = {
     'особисту інформацію успішно оновлено',
   contact_details: 'Контактні дані',
   add_your_email: 'Додайте Вашу електронну пошту',
+  add_your_phone: 'Додайте Ваш номер телефону',
+  logout: 'Вийти з облікового запису',
 };

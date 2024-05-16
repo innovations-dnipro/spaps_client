@@ -1,0 +1,29 @@
+.s-profile-logout {
+  display: flex;
+  height: 36px;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 100px;
+  border: 1px solid #9ea5b0;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:target {
+    filter: brightness(1.1);
+    box-shadow: 0px 2px 12px 0px rgba(5, 89, 253, 0.1);
+  }
+}
+
+.s-profile-logout-label {
+  color: #061b40;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 20px;
+}

@@ -17,4 +17,5 @@ export const input_messages = {
   male: 'Чоловіча',
   female: 'Жіноча',
   other: 'Інше',
+  phone: 'Номер телефону',
 };

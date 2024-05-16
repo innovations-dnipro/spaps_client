@@ -7,6 +7,7 @@
       <ProfileAvatar />
       <ProfilePersonalData />
       <ProfileContactDetails />
+      <ProfileLogout />
     </div>
   </div>
 </template>

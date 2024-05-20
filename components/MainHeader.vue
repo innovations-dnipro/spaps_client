@@ -7,7 +7,7 @@
       <!-- <NuxtLink to="/password-reset"> PS </NuxtLink>
       <NuxtLink to="/registration"> RG </NuxtLink>
       <NuxtLink to="/profile"> PR </NuxtLink> -->
-      <button class="s-main-header-spa-owners" @click="navigateTo('/login')">
+      <button class="s-main-header-spa-owners" @click="handleProfileNavigation">
         <span class="s-main-header-spa-owners-label">{{
           $t('header_messages.spa_owners')
         }}</span>
@@ -28,3 +28,12 @@
     </div>
   </header>
 </template>
+<script lang="ts" setup>
+const userStore = useUserStore();
+
+const handleProfileNavigation = () => {
+  const path = userStore.user?.id ? '/profile' : '/login';
+
+  navigateTo(path);
+};
+</script>

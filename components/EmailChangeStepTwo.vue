@@ -1,6 +1,6 @@
 <template>
   <div class="s-login-description">
-    {{ $t('password_reset.enter_confirmation_code') }}
+    {{ $t('email_change_messages.new_email_address_confirmation') }}
   </div>
   <div class="s-registration-code-verification-container">
     <code-verification :inputAmount="5" @on-change="onChange" />
@@ -34,47 +34,31 @@
     @click="onContinueButtonClick"
   >
     <span class="s-login-btn-label">{{
-      $t('registration_messages.continue')
+      $t('email_change_messages.confirm')
     }}</span>
   </button>
 </template>
 <script lang="ts" setup>
+import type { Nullable, TTimeout } from '@spaps/types';
 import { useApi } from '@spaps/api';
 import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
+import { useToast } from 'vue-toastification';
+import { useUserStore } from '../stores/user';
 
-const props = defineProps({
-  email: String,
-});
 const api = useApi();
-const code = ref('');
-const isDisabled = ref(false);
 const count = ref(60);
 const isCounterHidden = computed(() => count.value <= 0);
-const timer = ref(null);
+const timer: Ref<Nullable<TTimeout>> = ref(null);
+const code = ref('');
+const isDisabled = ref(false);
+const userStore = useUserStore();
+const toast = useToast();
+const { $i18n } = useNuxtApp();
 
-const emit = defineEmits(['change-step', 'submit-email']);
+const emit = defineEmits(['submit-email']);
 const onChange = (value: string) => {
   code.value = value;
   isDisabled.value = code.value.length !== 5;
-};
-const onContinueButtonClick = async () => {
-  isDisabled.value = true;
-  try {
-    const response = await asyncGlobalSpinner(
-      api.AuthorizationService.providePasswordResetConfirmCode({
-        params: { code: code.value },
-        data: { email: props.email },
-      })
-    );
-
-    if (Array.isArray(response) && response[0] === true) {
-      emit('change-step', 3);
-    }
-  } catch (e) {
-    console.log(e);
-  }
-
-  isDisabled.value = false;
 };
 const updateCounter = () => {
   timer.value = setTimeout(() => {
@@ -85,7 +69,7 @@ const updateCounter = () => {
     }
 
     if (count.value <= 0) {
-      clearTimeout(timer.value);
+      clearTimeout(timer.value as TTimeout);
     }
   }, 1000);
 };
@@ -99,6 +83,32 @@ const onSendAgainButtonClick = async () => {
   count.value = 60;
   updateCounter();
 };
+const onContinueButtonClick = async () => {
+  isDisabled.value = true;
+  try {
+    const [response] = await asyncGlobalSpinner(
+      api.AuthorizationService.confirmEmailChangeCode({
+        params: { code: code.value },
+      })
+    );
+
+    if (response?.email) {
+      toast.success(
+        $i18n.t('email_change_messages.your_email_address_was_changed')
+      );
+      userStore.updateUser({
+        ...(userStore.user || {}),
+        email: response.email,
+      });
+
+      navigateTo('/profile');
+    }
+  } catch (e) {
+    console.log(e);
+  }
+
+  isDisabled.value = false;
+};
 
 onMounted(() => {
   updateCounter();
@@ -110,7 +120,7 @@ onUnmounted(() => {
   }
 
   if (timer?.value) {
-    clearTimeout(timer.value);
+    clearTimeout(timer.value as TTimeout);
   }
 });
 </script>

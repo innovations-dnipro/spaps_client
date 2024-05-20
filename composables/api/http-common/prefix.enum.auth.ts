@@ -5,6 +5,9 @@ const url = url_prefix.users;
 
 export const EndpointsEnumAuth = {
   Authorized: `${url}/authorized`,
+  ChangeEmail: ({ email }: IParams) => `${url}/change-email/${email}`,
+  ConfirmEmailChangeCode: ({ code }: IParams) =>
+    `${url}/confirm-email-change-code/${code}`,
   Login: `${url}/login`,
   Logout: `${url}/logout`,
   PasswordReset: `${url}/password-reset`,

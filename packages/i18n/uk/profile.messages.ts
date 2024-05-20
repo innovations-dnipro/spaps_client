@@ -14,4 +14,8 @@ export const profile_messages = {
     "Може минути кілька хвилин, перш ніж нове фото з'явиться в профілі.",
   personal_information_was_updated_successfully:
     'особисту інформацію успішно оновлено',
+  contact_details: 'Контактні дані',
+  add_your_email: 'Додайте Вашу електронну пошту',
+  add_your_phone: 'Додайте Ваш номер телефону',
+  logout: 'Вийти з облікового запису',
 };

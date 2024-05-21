@@ -43,8 +43,6 @@ import { isEmpty } from '@spaps/utils';
 import { useUserStore } from '../stores/user';
 import { Mask } from 'maska';
 
-console.log({ Mask });
-
 const { phoneValidator, maxLengthValidator, requiredValidator } =
   useValidators();
 const formRef = ref();
@@ -97,7 +95,7 @@ const onUpdate = (value: string) => {
 
 onMounted(() => {
   if (userStore?.user?.phone) {
-    formData.value.phone = userStore.user.phone;
+    formData.value.phone = String(userStore.user.phone).replace('+380', '');
   }
 });
 </script>

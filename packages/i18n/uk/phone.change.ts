@@ -6,5 +6,5 @@ export const phone_change_messages = {
   new_phone_number_confirmation:
     'Підтвердження нового номеру телефону. Введіть код з смс, який вам прийшов на вказаний номер телефону.',
   confirm: 'Підтвердити',
-  your_phone_number_was_changed: 'Ваш номер телефону змінений успішно',
+  your_phone_number_was_changed: 'Ваш номер телефону успішно змінено',
 };

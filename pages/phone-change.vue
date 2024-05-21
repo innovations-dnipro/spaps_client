@@ -5,7 +5,7 @@
       {{ $t('phone_change_messages.phone_number_change') }}
     </div>
     <phone-change-step-one v-if="step === 1" @submit-phone="submitNewPhone" />
-    <!-- <phone-change-step-two v-if="step === 2" @submit-phone="submitPhone" /> -->
+    <phone-change-step-two v-if="step === 2" @submit-phone="submitPhone" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -20,12 +20,13 @@ const onChangeStep = (nextStep: number) => {
   step.value = nextStep;
 };
 const submitPhone = async () => {
-  const [response] = await asyncGlobalSpinner();
-  //   api.AuthorizationService.changePhone({
-  //     params: {
-  //       phone: savedPhone.value,
-  //     },
-  //   })
+  const [response] = await asyncGlobalSpinner(
+    api.AuthorizationService.changePhone({
+      params: {
+        phone: savedPhone.value,
+      },
+    })
+  );
 
   return response;
 };

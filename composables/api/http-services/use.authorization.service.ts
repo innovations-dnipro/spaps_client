@@ -103,6 +103,24 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     );
   };
 
+  const changePhone = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.get(EndpointsEnum.Authorization.ChangePhone(params));
+  };
+
+  const confirmPhoneChangeCode = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.get(
+      EndpointsEnum.Authorization.ConfirmPhoneChangeCode(params)
+    );
+  };
+
   return {
     changeEmail,
     confirmEmailChangeCode,
@@ -116,5 +134,7 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     providePasswordResetEmail,
     providePasswordResetConfirmCode,
     resetPassword,
+    changePhone,
+    confirmPhoneChangeCode,
   };
 };

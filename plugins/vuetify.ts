@@ -1,5 +1,6 @@
 import {
   VApp,
+  VAutocomplete,
   VDialog,
   VFileInput,
   VForm,
@@ -17,6 +18,7 @@ export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     components: {
       VApp,
+      VAutocomplete,
       VDateInput,
       VDialog,
       VFileInput,

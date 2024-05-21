@@ -18,4 +18,5 @@ export const input_messages = {
   female: 'Жіноча',
   other: 'Інше',
   phone: 'Номер телефону',
+  enter_your_phone: 'Введіть ваш номер телефону',
 };

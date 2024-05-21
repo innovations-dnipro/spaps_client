@@ -1,0 +1,90 @@
+.s-sauna-search {
+  display: inherit !important;
+  width: 200px;
+  grid-template-areas: none;
+
+  .v-input__control {
+    width: 200px;
+    height: 36px;
+  }
+
+  .v-field__field {
+    width: 200px;
+    height: 36px;
+    border-radius: 18px !important;
+  }
+
+  .v-field__input {
+    padding: 0;
+    width: 200px;
+    height: 36px !important;
+    min-height: 36px;
+    border-radius: 18px !important;
+    padding: 10px 2px 10px 16px;
+
+
+    & > input {
+      color: #5c6d80;
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      height: 36px;
+      padding-left: 16px !important;
+    }
+  }
+
+  .v-input .v-field {
+    border-radius: 18px !important;
+  }
+
+  .v-input--density-compact {
+    --v-input-control-height: 36px !important;
+    border-radius: 18px !important;
+  }
+
+  .v-field__overlay {
+    border-radius: 18px !important;
+  }
+
+  .v-field__outline {
+    display: none !important;
+  }
+
+  .v-field--appended {
+    padding-inline-end: 3px;
+  }
+
+  .s-sauna-search-inner-icon {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    background: $--blue-2;
+    z-index: 1;
+
+    .ph {
+      font-size: 20px;
+      filter: invert(1);
+    }
+  }
+
+  .v-input__details {
+    display: none;
+  }
+
+  .v-select__menu-icon {
+    display: none;
+  }
+
+  .v-field__append-inner {
+    .mdi-menu-down {
+      display: none;
+    }
+  }
+}

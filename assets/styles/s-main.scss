@@ -1,0 +1,10 @@
+.s-global-container {
+  display: grid;
+  grid-template-rows: 104px 1fr auto;
+  min-height: 100vh;
+  background: $--white-2;
+}
+
+.s-main {
+  height: calc(100% - 104px);
+}

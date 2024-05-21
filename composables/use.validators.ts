@@ -1,3 +1,4 @@
+import { isValidPhoneNumber } from 'libphonenumber-js';
 import { isEmpty, isEmptyArray, isNullOrUndefined } from '@spaps/utils';
 
 export const useValidators = () => {
@@ -118,6 +119,15 @@ export const useValidators = () => {
     );
   };
 
+  // NOTE: Phone Validator
+  const phoneValidator = (phoneNumber: string) => {
+    console.log({ phoneNumber });
+    return (
+      isValidPhoneNumber(`+380${phoneNumber}`, 'UA') ||
+      $i18n.t('validation_error_messages.must_be_valid_phone_number')
+    );
+  };
+
   // NOTE: Required Validator
   const requiredValidator = (value: unknown) => {
     if (isNullOrUndefined(value) || isEmptyArray(value) || value === false)
@@ -139,6 +149,7 @@ export const useValidators = () => {
     maxLengthValidator,
     nameValidator,
     passwordValidator,
+    phoneValidator,
     requiredValidator,
   };
 };

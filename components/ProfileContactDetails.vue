@@ -23,6 +23,7 @@
       class="mt-3"
       hide-details="auto"
       append-inner-icon="ph ph-pencil-simple-line"
+      @click:appendInner="resetPhone"
     ></v-text-field>
   </div>
   <div class="s-profile-contact-details-empty-input" v-if="!phone">
@@ -36,6 +37,10 @@ const phone = ref('');
 
 const resetEmail = () => {
   navigateTo('/email-change');
+};
+
+const resetPhone = () => {
+  navigateTo('/phone-change');
 };
 
 onMounted(() => {

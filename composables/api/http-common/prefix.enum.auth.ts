@@ -20,4 +20,7 @@ export const EndpointsEnumAuth = {
     `${url}/password-reset-email/${email}`,
   PasswordResetConfirmCode: ({ code }: IParams) =>
     `${url}/password-reset-confirm-code/${code}`,
+  ChangePhone: ({ phone }: IParams) => `${url}/change-phone/${phone}`,
+  ConfirmPhoneChangeCode: ({ code }: IParams) =>
+    `${url}/confirm-phone-change-code/${code}`,
 };

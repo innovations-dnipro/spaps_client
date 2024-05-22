@@ -3,11 +3,14 @@
     <Back />
     <span class="s-profile-title">{{ $t('profile_messages.profile') }}</span>
     <Tabs :tabs="tabs" :currentTab="currentTab" @on-click="selectTab" />
-    <div class="s-profile-main-container">
+    <div class="s-profile-main-container" v-if="currentTab === 1">
       <ProfileAvatar />
       <ProfilePersonalData />
       <ProfileContactDetails />
       <ProfileLogout />
+    </div>
+    <div class="s-profile-main-container" v-if="currentTab === 2">
+      <ProfilePersonalization />
     </div>
   </div>
 </template>
@@ -16,14 +19,14 @@
 //   middleware: 'auth',
 // });
 const $i18n = useI18n();
-const tabs: string[] = [
-  $i18n.t('profile_messages.pesonal_data'),
-  $i18n.t('profile_messages.settings'),
-  $i18n.t('profile_messages.my_reservations'),
+const tabs: Array<{ order: number; label: string }> = [
+  { order: 1, label: $i18n.t('profile_messages.pesonal_data') },
+  { order: 2, label: $i18n.t('profile_messages.settings') },
+  { order: 3, label: $i18n.t('profile_messages.my_reservations') },
 ];
-const currentTab: Ref<string> = ref(tabs[0]);
+const currentTab: Ref<number> = ref(1);
 
-const selectTab = (tab: string) => {
-  currentTab.value = tab;
+const selectTab = (order: number) => {
+  currentTab.value = order;
 };
 </script>

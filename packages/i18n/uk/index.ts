@@ -1,3 +1,4 @@
+import { profile_personalization_messages } from './profile.personalization.messages';
 import { phone_change_messages } from './phone.change';
 import { spa_select_messages } from './spa.select.messages';
 import { sauna_search_messages } from './sauna.search.messages';
@@ -24,6 +25,7 @@ export const uk = {
   password_reset,
   phone_change_messages,
   profile_messages,
+  profile_personalization_messages,
   profile_rentor_messages,
   registration_messages,
   sauna_search_messages,

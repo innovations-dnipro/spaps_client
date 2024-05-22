@@ -121,7 +121,6 @@ export const useValidators = () => {
 
   // NOTE: Phone Validator
   const phoneValidator = (phoneNumber: string) => {
-    console.log({ phoneNumber });
     return (
       isValidPhoneNumber(`+380${phoneNumber}`, 'UA') ||
       $i18n.t('validation_error_messages.must_be_valid_phone_number')

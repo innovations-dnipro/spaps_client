@@ -44,6 +44,7 @@ import { useApi } from '@spaps/api';
 import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
 import { useToast } from 'vue-toastification';
 import { useUserStore } from '../stores/user';
+import { ERole } from '../packages/core/enums/role';
 
 const api = useApi();
 const count = ref(60);
@@ -101,7 +102,13 @@ const onContinueButtonClick = async () => {
         phone: response.phone,
       });
 
-      navigateTo('/profile');
+      if (userStore.user?.role === ERole.CLIENT) {
+        navigateTo('/profile');
+      }
+
+      if (userStore.user?.role === ERole.RENTOR) {
+        navigateTo('/profile-rentor');
+      }
     }
   } catch (e) {
     console.log(e);

@@ -1,4 +1,8 @@
-import { useAuthorizationService, useClientService } from './http-services';
+import {
+  useAuthorizationService,
+  useClientService,
+  useRentorService,
+} from './http-services';
 import { useAxiosInstance } from './use.axios.instance';
 
 export const useApi = () => {
@@ -7,5 +11,6 @@ export const useApi = () => {
   return {
     AuthorizationService: useAuthorizationService(axiosInstance),
     ClientService: useClientService(axiosInstance),
+    RentorService: useRentorService(axiosInstance),
   };
 };

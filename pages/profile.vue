@@ -12,9 +12,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-definePageMeta({
-  middleware: 'auth',
-});
+// definePageMeta({
+//   middleware: 'auth',
+// });
 const $i18n = useI18n();
 const tabs: string[] = [
   $i18n.t('profile_messages.pesonal_data'),

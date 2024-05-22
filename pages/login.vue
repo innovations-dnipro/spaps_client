@@ -71,6 +71,7 @@
 import { useApi } from '@spaps/api';
 import { isEmpty } from '@spaps/utils';
 import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
+import { ERole } from '../packages/core/enums/role';
 
 const {
   requiredValidator,
@@ -110,7 +111,7 @@ const onSubmit = async () => {
   isLoading.value = true;
 
   try {
-    const response: unknown = await asyncGlobalSpinner(
+    const [response]: [unknown] = await asyncGlobalSpinner(
       api.AuthorizationService.login({
         data: {
           email: formData.value.email,
@@ -119,8 +120,11 @@ const onSubmit = async () => {
       })
     );
 
-    if (Array.isArray(response) && response?.length) {
+    if (response?.role === ERole.CLIENT) {
       router.push({ path: '/profile' });
+    }
+    if (response?.role === ERole.RENTOR) {
+      router.push({ path: '/profile-rentor' });
     }
   } catch (e) {
     console.log(e);

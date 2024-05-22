@@ -10,6 +10,7 @@ import { login_messages } from './login.messages';
 import { validation_error_messages } from './validation.error.messages';
 import { password_reset } from './password.reset.messages';
 import { profile_messages } from './profile.messages';
+import { profile_rentor_messages } from './profile.rentor.messages';
 import { date_input_messages } from './date.input.messages';
 import { email_change_messages } from './email.change';
 
@@ -23,6 +24,7 @@ export const uk = {
   password_reset,
   phone_change_messages,
   profile_messages,
+  profile_rentor_messages,
   registration_messages,
   sauna_search_messages,
   server_error_messages,

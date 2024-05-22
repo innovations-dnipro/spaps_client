@@ -109,5 +109,6 @@ export default defineNuxtConfig({
   routeRules: {
     // '/profile/**': { ssr: false },
     '/profile': { ssr: false },
+    '/profile-rentor': { ssr: false },
   },
 });

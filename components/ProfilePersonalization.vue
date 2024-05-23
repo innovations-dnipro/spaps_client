@@ -35,9 +35,11 @@
       <span>{{
         $t('profile_personalization_messages.entrance_password')
       }}</span>
-      <div>
-        <i class="ph ph-caret-circle-right"></i>
-      </div>
+      <NuxtLink to="/password-change" class="s-profile-settings-item-main-link">
+        <div class="s-profile-settings-item-main-icon">
+          <i class="ph ph-caret-circle-right"></i>
+        </div>
+      </NuxtLink>
     </div>
   </div>
   <div class="s-profile-settings-item">

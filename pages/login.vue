@@ -71,7 +71,7 @@
 import { useApi } from '@spaps/api';
 import { isEmpty } from '@spaps/utils';
 import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
-import { ERole } from '../packages/core/enums/role';
+import { ERole } from '@spaps/enums/role';
 
 const {
   requiredValidator,

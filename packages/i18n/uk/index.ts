@@ -1,3 +1,4 @@
+import { password_change } from './password.change.messages';
 import { profile_personalization_messages } from './profile.personalization.messages';
 import { phone_change_messages } from './phone.change';
 import { spa_select_messages } from './spa.select.messages';
@@ -22,6 +23,7 @@ export const uk = {
   header_messages,
   input_messages,
   login_messages,
+  password_change,
   password_reset,
   phone_change_messages,
   profile_messages,

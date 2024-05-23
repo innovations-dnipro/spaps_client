@@ -9,12 +9,16 @@ const LoaderManagerInstance = new LoaderManager();
 let timeout;
 
 const startGlobalSpinner = (): void => {
-  window.clearTimeout(timeout);
+  if (timeout) {
+    window.clearTimeout(timeout);
+  }
   isLoading.value = true;
 };
 
 const finishGlobalSpinner = (): void => {
-  window.clearTimeout(timeout);
+  if (timeout) {
+    window.clearTimeout(timeout);
+  }
   isLoading.value = false;
 };
 

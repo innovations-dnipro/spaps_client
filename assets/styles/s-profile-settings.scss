@@ -29,8 +29,18 @@
   & > span {
     flex-grow: 1;
   }
+}
 
-  & > div > .ph {
+.s-profile-settings-item-main-link {
+  text-decoration: none;
+  height: 100%;
+}
+
+.s-profile-settings-item-main-icon {
+  display: flex;
+  align-items: center;
+
+  .ph {
     font-size: 24px;
     color: $--blue-3;
   }

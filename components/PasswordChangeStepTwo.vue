@@ -1,4 +1,7 @@
 <template>
+  <div class="s-login-description">
+    {{ $t('password_change.make_up_new_strong_password') }}
+  </div>
   <v-form
     class="s-login-form"
     fast-fail
@@ -7,8 +10,8 @@
   >
     <v-text-field
       v-model="formData.password"
-      :label="$t('input_messages.password')"
-      :placeholder="$t('input_messages.enter_your_password')"
+      :label="$t('input_messages.new_password')"
+      :placeholder="$t('input_messages.create_password')"
       :rules="[
         requiredValidator,
         minLengthValidator(formData.password, 6),
@@ -49,14 +52,19 @@
       type="submit"
     >
       <span class="s-login-btn-label">{{
-        $t('registration_messages.register')
+        $t('password_change.change_password')
       }}</span>
     </button>
   </v-form>
 </template>
 <script lang="ts" setup>
 import { isEmpty } from '@spaps/utils';
+import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
+import { useApi } from '@spaps/api';
+import { useToast } from 'vue-toastification';
+import { ERole } from '@spaps/enums/role';
 
+const api = useApi();
 const {
   requiredValidator,
   minLengthValidator,
@@ -71,6 +79,10 @@ const formData: Ref<{}> = ref({
 const isPasswordVisible = ref(false);
 const isConfirmPasswordVisible = ref(false);
 const isLoading = ref(false);
+const userStore = useUserStore();
+const toast = useToast();
+const { $i18n } = useNuxtApp();
+const router = useRouter();
 
 const isSubmitDisabled = computed(() => {
   return (
@@ -92,7 +104,33 @@ const onSubmit = async () => {
   }
 
   isLoading.value = true;
-  await emit('submit-password', formData.value.password);
+
+  try {
+    const [response] = await asyncGlobalSpinner(
+      api.AuthorizationService.putNewPassword({
+        data: { password: formData.value.password },
+      })
+    );
+
+    if (response.id) {
+      toast.success(
+        $i18n.t('password_change.your_password_was_changed_successfully')
+      );
+      userStore.updateUser({
+        ...(userStore.user || {}),
+        password: response.password,
+      });
+      isLoading.value = false;
+      if (response?.role === ERole.CLIENT) {
+        router.push({ path: '/profile' });
+      }
+      if (response?.role === ERole.RENTOR) {
+        router.push({ path: '/profile-rentor' });
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
   isLoading.value = false;
 };
 </script>

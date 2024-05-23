@@ -11,6 +11,7 @@
     </div>
     <div class="s-profile-main-container" v-if="currentTab === 2">
       <ProfilePersonalization />
+      <ProfileSafetyPrivacy />
     </div>
   </div>
 </template>

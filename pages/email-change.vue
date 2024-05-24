@@ -1,11 +1,11 @@
 <template>
   <div class="s-login">
-    <back-to-profile />
+    <Back />
     <div class="s-login-title mb-2">
       {{ $t('email_change_messages.email_address_change') }}
     </div>
-    <email-change-step-one v-if="step === 1" @submit-email="submitNewEmail" />
-    <email-change-step-two v-if="step === 2" @submit-email="submitEmail" />
+    <EmailChangeStepOne v-if="step === 1" @submit-email="submitNewEmail" />
+    <EmailChangeStepTwo v-if="step === 2" @submit-email="submitEmail" />
   </div>
 </template>
 <script lang="ts" setup>

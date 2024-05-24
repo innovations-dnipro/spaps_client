@@ -1,8 +1,8 @@
 <template>
   <div class="s-login">
-    <BackToProfile />
+    <Back />
     <div class="s-login-title">
-      {{ $t('password_reset.access_restoration') }}
+      {{ $t('password_change.password_change') }}
     </div>
     <PasswordChangeStepOne v-if="step === 1" @change-step="changeStep(2)" />
     <PasswordChangeStepTwo v-if="step === 2" />

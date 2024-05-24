@@ -110,5 +110,6 @@ export default defineNuxtConfig({
     // '/profile/**': { ssr: false },
     '/profile': { ssr: false },
     '/profile-rentor': { ssr: false },
+    '/owners-office': { ssr: false },
   },
 });

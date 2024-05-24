@@ -122,10 +122,10 @@ const onSubmit = async () => {
       });
       isLoading.value = false;
       if (response?.role === ERole.CLIENT) {
-        router.push({ path: '/profile' });
+        router.push({ path: '/profile', query: { tab: 2 } });
       }
       if (response?.role === ERole.RENTOR) {
-        router.push({ path: '/profile-rentor' });
+        router.push({ path: '/owners-office', query: { tab: 6 } });
       }
     }
   } catch (e) {

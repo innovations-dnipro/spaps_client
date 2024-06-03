@@ -6,9 +6,11 @@ import {
   VForm,
   VInput,
   VSelect,
+  VRangeSlider,
   VTextField,
 } from 'vuetify/components';
 import { VDateInput } from 'vuetify/labs/VDateInput';
+import { aliases, mdi } from 'vuetify/iconsets/mdi';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
@@ -24,6 +26,7 @@ export default defineNuxtPlugin((app) => {
       VFileInput,
       VForm,
       VInput,
+      VRangeSlider,
       VSelect,
       VTextField,
     },

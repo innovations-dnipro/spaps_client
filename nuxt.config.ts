@@ -20,6 +20,9 @@ export default defineNuxtConfig({
     '@spaps/validators': fileURLToPath(
       new URL('./composables/useValidators', import.meta.url)
     ),
+    '@spaps/values': fileURLToPath(
+      new URL('./packages/values', import.meta.url)
+    ),
   },
   css: [
     './assets/styles/main.scss',

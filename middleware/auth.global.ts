@@ -8,6 +8,7 @@ import { ERole } from '../packages/core/enums/role';
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const api = useApi();
   const userStore = useUserStore();
+  const filterStore = useFilterStore();
   const path: string = to.path;
   const protectedRouteRoles: ERole[] = ProtectedRoute?.[path];
   const toast = useToast();
@@ -36,6 +37,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (userStore.user) {
       userStore.updateUser(null);
     }
+  }
+
+  if (filterStore.showsFilters) {
+    filterStore.toggleFilters(false);
   }
 
   if (protectedRouteRoles) {

@@ -138,6 +138,26 @@ export const useValidators = () => {
     );
   };
 
+  const minValidator = (count: number) => {
+    return (value: number) => {
+      if (value === undefined || value === null) return;
+      return (
+        Number(value) > count ||
+        $i18n.t('validation_error_messages.min', { count })
+      );
+    };
+  };
+
+  const maxValidator = (count: number) => {
+    return (value: number) => {
+      if (value === undefined || value === null) return;
+      return (
+        count < Number(value) ||
+        $i18n.t('validation_error_messages.max', { count })
+      );
+    };
+  };
+
   return {
     alphaValidator,
     confirmedValidator,
@@ -150,5 +170,7 @@ export const useValidators = () => {
     passwordValidator,
     phoneValidator,
     requiredValidator,
+    minValidator,
+    maxValidator,
   };
 };

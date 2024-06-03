@@ -22,4 +22,6 @@ export const input_messages = {
   current_password: 'Поточний пароль',
   enter_current_password: 'Введіть поточний пароль',
   new_password: 'Новий пароль',
+  from: 'Від',
+  until: 'До',
 };

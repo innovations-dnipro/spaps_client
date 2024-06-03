@@ -3,10 +3,10 @@
     id="123"
     :items="items"
     class="s-vts"
-    :label="$t('venue_type_messages.select_venue_type')"
-    multiple
+    :placeholder="$t('venue_type_messages.select_venue_type')"
     persistent-hint
     v-model="selected"
+    color="primary"
     :hint="$t('venue_type_messages.select_venue_type')"
     :menu-props="{ contentClass: 's-vts-menu' }"
     @update:modelValue="onUpdate"
@@ -25,7 +25,7 @@ const $i18n = useI18n();
 const route = useRoute();
 
 const initialRouteQuery = ref({});
-const selected = ref([]);
+const selected = ref(null);
 const items = [
   {
     title: $i18n.t(`filter_messages.${EVenueType.pool}`),
@@ -62,7 +62,7 @@ const onUpdate = () => {
     path: '/search', //route.path,
     query: {
       ...initialRouteQuery.value,
-      venue_type: selected.value.join(','),
+      venue_type: selected.value,
     },
   });
 };
@@ -71,7 +71,7 @@ onMounted(() => {
   initialRouteQuery.value = route.query;
 
   if (route.query?.venue_type) {
-    selected.value = route.query?.venue_type.split(',');
+    selected.value = route.query?.venue_type;
   }
 });
 </script>

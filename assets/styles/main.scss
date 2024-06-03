@@ -4,6 +4,11 @@
 @import './s-back.scss';
 @import './s-code-verification.scss';
 @import './s-disabled-btn.scss';
+@import './s-filter-button.scss';
+@import './s-filter-date.scss';
+@import './s-filter-guest-number.scss';
+@import './s-filter-list.scss';
+@import './s-filter-price-range.scss';
 @import './s-home.scss';
 @import './s-loader.scss';
 @import './s-login.scss';
@@ -15,7 +20,12 @@
 @import './s-profile-info.scss';
 @import './s-profile-logout.scss';
 @import './s-profile-rentor-objects';
+@import './s-profile-settings';
 @import './s-registration.scss';
 @import './s-sauna-search';
-@import './s-spa-select';
+@import './s-venue-type-select';
 @import './s-tabs.scss';
+
+* {
+  box-sizing: border-box !important;
+}

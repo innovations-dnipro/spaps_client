@@ -71,7 +71,7 @@
 import { useApi } from '@spaps/api';
 import { isEmpty } from '@spaps/utils';
 import { asyncGlobalSpinner } from '@spaps/core/loading-worker';
-import { ERole } from '../packages/core/enums/role';
+import { ERole } from '@spaps/enums/role';
 
 const {
   requiredValidator,
@@ -80,10 +80,9 @@ const {
   maxLengthValidator,
 } = useValidators();
 const api = useApi();
-const router = useRouter();
+const route = useRoute();
 const formRef = ref();
 const isLoading = ref(false);
-const isValid = ref(true);
 const isPasswordVisible = ref();
 const formData: Ref<{}> = ref({
   email: '',
@@ -120,15 +119,22 @@ const onSubmit = async () => {
       })
     );
 
-    if (response?.role === ERole.CLIENT) {
-      router.push({ path: '/profile' });
+    isLoading.value = false;
+
+    if (route.query?.next) {
+      return navigateTo({ path: `/${route.query?.next}` });
     }
+
+    if (response?.role === ERole.CLIENT) {
+      return navigateTo({ path: '/profile' });
+    }
+
     if (response?.role === ERole.RENTOR) {
-      router.push({ path: '/profile-rentor' });
+      return navigateTo({ path: '/owners-office' });
     }
   } catch (e) {
     console.log(e);
+    isLoading.value = false;
   }
-  isLoading.value = false;
 };
 </script>

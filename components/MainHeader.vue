@@ -29,11 +29,24 @@
   </header>
 </template>
 <script lang="ts" setup>
+import { ERole } from '../packages/core/enums/role';
+import type { Nullable } from '../packages/core/types/nullable';
+
 const userStore = useUserStore();
 
 const handleProfileNavigation = () => {
-  const path = userStore.user?.id ? '/profile' : '/login';
+  const role: Nullable<ERole> = userStore.user?.role as Nullable<ERole>;
 
-  navigateTo(path);
+  if (!role) {
+    navigateTo('/login');
+  }
+
+  if (role === ERole.CLIENT) {
+    navigateTo('/profile');
+  }
+
+  if (role === ERole.RENTOR) {
+    navigateTo('/owners-office');
+  }
 };
 </script>

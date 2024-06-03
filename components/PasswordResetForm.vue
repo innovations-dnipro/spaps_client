@@ -71,7 +71,6 @@ const formData: Ref<{}> = ref({
 const isPasswordVisible = ref(false);
 const isConfirmPasswordVisible = ref(false);
 const isLoading = ref(false);
-const isValid = ref(true);
 
 const isSubmitDisabled = computed(() => {
   return (

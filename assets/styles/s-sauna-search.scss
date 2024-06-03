@@ -1,11 +1,13 @@
 .s-sauna-search {
   display: inherit !important;
-  width: 200px;
+  min-width: 200px;
   grid-template-areas: none;
+  margin-left: 8px;
 
   .v-input__control {
-    width: 200px;
+    min-width: 200px;
     height: 36px;
+    flex-grow: 1;
   }
 
   .v-field__field {
@@ -21,7 +23,6 @@
     min-height: 36px;
     border-radius: 18px !important;
     padding: 10px 2px 10px 16px;
-
 
     & > input {
       color: #5c6d80;

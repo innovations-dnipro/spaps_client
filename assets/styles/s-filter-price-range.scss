@@ -1,0 +1,34 @@
+.s-fpr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.s-fpr-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .v-text-field {
+    width: 112px;
+    max-width: 112px;
+  }
+}
+
+.s-fpr-input-container-line {
+  flex-grow: 1;
+  margin: 0 8px;
+  height: 28px;
+  border-bottom: 1px solid #dcdce2;
+}
+
+.s-fpr-slider-container {
+  width: 100%;
+  height: 28px;
+  margin-top: 12px;
+
+  .v-slider-track__background {
+    background-color: $--grey-3 !important;
+    opacity: 1 !important;
+  }
+}

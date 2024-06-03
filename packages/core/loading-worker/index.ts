@@ -9,12 +9,16 @@ const LoaderManagerInstance = new LoaderManager();
 let timeout;
 
 const startGlobalSpinner = (): void => {
-  window.clearTimeout(timeout);
+  if (timeout) {
+    window.clearTimeout(timeout);
+  }
   isLoading.value = true;
 };
 
 const finishGlobalSpinner = (): void => {
-  window.clearTimeout(timeout);
+  if (timeout) {
+    window.clearTimeout(timeout);
+  }
   isLoading.value = false;
 };
 
@@ -38,7 +42,8 @@ const asyncSpinnerByName = <T>(name: string) => {
     try {
       results = await Promise.all(promises);
     } catch (e) {
-      console.error('[asyncSpinnerByName]: request error', e);
+      console.error('[asyncSpinnerByName]: request error');
+      typeof e === 'object' ? console.dir(e) : console.log(e);
       finishSpinnerByName(name);
       finishGlobalSpinner();
       throw new Error(e);
@@ -56,8 +61,9 @@ const asyncGlobalSpinner = async (
   try {
     results = await Promise.all(promises);
   } catch (e) {
-    console.error('[asyncGlobalSpinner]: request error', e);
     finishGlobalSpinner();
+    console.error('[asyncGlobalSpinner]: request error');
+    typeof e === 'object' ? console.dir(e) : console.log(e);
     throw new Error(e);
   }
   finishGlobalSpinner();

@@ -1,0 +1,103 @@
+.s-vts {
+  min-width: 252px;
+  margin-left: 8px;
+
+  .v-field {
+    border-radius: 18px !important;
+  }
+
+  .v-field__field {
+    width: 240px;
+    min-height: 36px;
+    border-radius: 18px !important;
+  }
+
+  .v-input {
+    line-height: 1;
+  }
+
+  .v-input__control {
+    min-width: 252px;
+    line-height: 1;
+  }
+
+  .v-field__input {
+    padding: 0;
+    padding-left: 12px;
+    min-height: 36px;
+    width: auto;
+    min-width: 200px;
+    border-radius: 18px !important;
+    padding: 10px 2px 10px 16px;
+
+    & > input {
+      width: 240px;
+      overflow: hidden;
+      color: #364759;
+      text-overflow: ellipsis;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      color: #5c6d80;
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      height: 36px;
+      padding-left: 16px !important;
+    }
+
+    .v-select__selection {
+      .v-select__selection-text {
+        color: #364759;
+      }
+    }
+  }
+
+  .s-vts-inner-icon {
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+
+    .v-select__menu-icon {
+      display: none;
+    }
+  }
+
+  .v-field--appended {
+    padding-inline-end: 12px;
+  }
+
+  .v-label.v-field-label.v-field-label--floating {
+    display: none;
+  }
+
+  .v-input__details {
+    display: none;
+  }
+
+  .v-select__menu-icon {
+    display: none;
+  }
+
+  .v-field__append-inner {
+    .mdi-menu-down {
+      display: none;
+    }
+  }
+}
+
+.s-vts-menu {
+  .v-list-item__prepend {
+    display: none;
+  }
+}

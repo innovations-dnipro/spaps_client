@@ -1,11 +1,11 @@
 <template>
   <div class="s-login">
-    <back-to-profile />
+    <Back />
     <div class="s-login-title mb-2">
       {{ $t('phone_change_messages.phone_number_change') }}
     </div>
-    <phone-change-step-one v-if="step === 1" @submit-phone="submitNewPhone" />
-    <phone-change-step-two v-if="step === 2" @submit-phone="submitPhone" />
+    <PhoneChangeStepOne v-if="step === 1" @submit-phone="submitNewPhone" />
+    <PhoneChangeStepTwo v-if="step === 2" @submit-phone="submitPhone" />
   </div>
 </template>
 <script lang="ts" setup>

@@ -10,7 +10,7 @@
     />
     <registration-step-two
       v-if="step === 2"
-      @change-step="onChangeStep(3)"
+      @change-step="changeStep(3)"
       @submit-user-data="submitData"
     />
     <registration-step-three v-if="step === 3" />
@@ -35,7 +35,7 @@ const api = useApi();
 const step = ref(1);
 const userData = ref(null);
 
-const onChangeStep = (nextStep: number) => {
+const changeStep = (nextStep: number) => {
   step.value = nextStep;
 };
 const submitData = async () => {
@@ -61,10 +61,10 @@ const submitData = async () => {
 const onStepOneSubmitData = async (data?: IRegister) => {
   userData.value = data;
 
-  const response: unknown = await submitData();
+  const [response] = await submitData();
 
-  if (Array.isArray(response) || (response?.[0] === true && data)) {
-    onChangeStep(2);
+  if (response === true && data) {
+    changeStep(2);
   }
 };
 </script>

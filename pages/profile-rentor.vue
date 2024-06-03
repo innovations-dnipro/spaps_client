@@ -1,6 +1,6 @@
 <template>
   <div class="s-profile">
-    <BackToOffice />
+    <Back />
     <span class="s-profile-title">{{
       $t('profile_rentor_messages.personal_data')
     }}</span>

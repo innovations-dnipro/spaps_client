@@ -13,7 +13,7 @@ export interface IRegister {
   role: ENonAdminRole;
 }
 
-export interface ILoginResponse {
+export interface IUserResponse {
   id: number;
   createdAt: string;
   updatedAt: string;
@@ -37,3 +37,7 @@ export interface IPasswordReset {
 }
 
 export interface IPostAvatar {}
+
+export interface IPostPassword {
+  password: string;
+}

@@ -1,5 +1,11 @@
+import { filter_messages } from './filter.messages';
+import { profile_data_management_messages } from './profile.data.management';
+import { profile_safety_privacy_messages } from './profile.safety.privacy.messages';
+import { owners_office_messages } from './owners.office.messages';
+import { password_change } from './password.change.messages';
+import { profile_personalization_messages } from './profile.personalization.messages';
 import { phone_change_messages } from './phone.change';
-import { spa_select_messages } from './spa.select.messages';
+import { venue_type_messages } from './venue.type.messages';
 import { sauna_search_messages } from './sauna.search.messages';
 import { header_messages } from './header.messages';
 import { registration_messages } from './registration.messages';
@@ -18,16 +24,22 @@ export const uk = {
   back_messages,
   date_input_messages,
   email_change_messages,
+  filter_messages,
   header_messages,
   input_messages,
   login_messages,
+  owners_office_messages,
+  password_change,
   password_reset,
   phone_change_messages,
   profile_messages,
+  profile_data_management_messages,
+  profile_personalization_messages,
   profile_rentor_messages,
+  profile_safety_privacy_messages,
   registration_messages,
   sauna_search_messages,
   server_error_messages,
-  spa_select_messages,
   validation_error_messages,
+  venue_type_messages,
 };

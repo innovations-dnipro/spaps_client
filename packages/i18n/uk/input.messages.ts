@@ -19,4 +19,9 @@ export const input_messages = {
   other: 'Інше',
   phone: 'Номер телефону',
   enter_your_phone: 'Введіть ваш номер телефону',
+  current_password: 'Поточний пароль',
+  enter_current_password: 'Введіть поточний пароль',
+  new_password: 'Новий пароль',
+  from: 'Від',
+  until: 'До',
 };

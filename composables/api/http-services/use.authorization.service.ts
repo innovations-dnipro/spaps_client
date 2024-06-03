@@ -5,10 +5,11 @@ import {
   type ILogin,
   type IRegister,
   type ServiceResponseType,
-  type ILoginResponse,
   type IConfirmRegistrationCode,
   type IPasswordResetConfirmCode,
   type IPasswordReset,
+  type IPostPassword,
+  type IUserResponse,
 } from '../interfaces';
 
 export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
@@ -24,7 +25,7 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     data,
   }: {
     data: ILogin;
-  }): ServiceResponseType<ILoginResponse> => {
+  }): ServiceResponseType<IUserResponse> => {
     return axiosInstance.post(EndpointsEnum.Authorization.Login, data);
   };
 
@@ -121,6 +122,25 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     );
   };
 
+  const postCurrentPassword = ({
+    data,
+  }: {
+    data: IPostPassword;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.post(
+      EndpointsEnum.Authorization.CurrentPassword,
+      data
+    );
+  };
+
+  const putNewPassword = ({
+    data,
+  }: {
+    data: IPostPassword;
+  }): ServiceResponseType<IUserResponse> => {
+    return axiosInstance.put(EndpointsEnum.Authorization.NewPassword, data);
+  };
+
   return {
     changeEmail,
     confirmEmailChangeCode,
@@ -136,5 +156,7 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     resetPassword,
     changePhone,
     confirmPhoneChangeCode,
+    postCurrentPassword,
+    putNewPassword,
   };
 };

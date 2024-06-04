@@ -63,11 +63,9 @@
 import { filter_messages } from '../packages/i18n/uk/filter.messages';
 import { EVenueType } from '../packages/core/enums/venue.type';
 
-const $i18n = useI18n();
-
 const onVenueTypeClick = (venueTypes: string[]) => {
   navigateTo({
-    path: '/search',
+    path: '/',
     query: {
       venue_type: venueTypes.join(','),
     },

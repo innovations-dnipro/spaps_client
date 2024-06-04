@@ -26,17 +26,19 @@
           </template>
         </VAutocomplete>
       </div>
-      <div v-for="town in currentTownList" class="s-town-param-list-item">
-        <input
-          type="radio"
-          v-model="selectedTown"
-          :value="town"
-          class="s-town-param-list-item-input"
-          :id="town"
-        />
-        <label :for="town" class="s-town-param-list-item-label">{{
-          $t(`location_messages.${town}`)
-        }}</label>
+      <div class="s-town-param-radio-list-container">
+        <div v-for="town in currentTownList" class="s-town-param-list-item">
+          <input
+            type="radio"
+            v-model="selectedTown"
+            :value="town"
+            class="s-town-param-list-item-input"
+            :id="town"
+          />
+          <label :for="town" class="s-town-param-list-item-label">{{
+            $t(`location_messages.${town}`)
+          }}</label>
+        </div>
       </div>
       <div class="s-town-param-extend-btn-container">
         <i

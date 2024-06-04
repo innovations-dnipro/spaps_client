@@ -16,10 +16,15 @@
         <img src="/arrow_filled_down.svg" alt="arrow_filled_down" />
       </div>
     </template>
+    <template v-slot:item="{ item, props: { onClick } }">
+      <div class="s-town-param-list-item" @click="onClick">
+        <span class="s-town-param-list-item-label">{{ item.title }}</span>
+      </div>
+    </template>
   </VSelect>
 </template>
 <script setup lang="ts">
-import { EVenueType } from '../packages/core/enums/venue.type';
+import { EVenueType } from '@spaps/enums/venue.type';
 
 const $i18n = useI18n();
 const route = useRoute();

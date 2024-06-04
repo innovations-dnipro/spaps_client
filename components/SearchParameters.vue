@@ -5,13 +5,30 @@
       <NameSelect />
     </div>
     <div class="s-home-container-one-block-one-layer-two">
-      <!-- <div class="s-home-container-one-settings">
-            <i class="ph ph-sliders-horizontal"></i>
-          </div> -->
-      <FilterButton />
+      <div class="s-fb-container">
+        <FilterButton v-if="showsFilterButton" />
+      </div>
       <div class="s-home-spa-select-container">
         <VenueTypeSelect />
       </div>
     </div>
   </div>
 </template>
+<script setup lang="ts">
+import { EVenueType } from '@spaps/core/enums/venue.type';
+
+const route = useRoute();
+
+const showsFilterButton = ref(false);
+
+onMounted(() => {
+  const isSearchRoute = route.path === '/search';
+  const hasValidVenueType = Object.values(EVenueType).includes(
+    route.query.venue_type
+  );
+
+  if (isSearchRoute && hasValidVenueType) {
+    showsFilterButton.value = !showsFilterButton.value;
+  }
+});
+</script>

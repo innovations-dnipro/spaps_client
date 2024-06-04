@@ -1,10 +1,7 @@
 <template>
   <div class="s-home-container-one-block-one">
     <div class="s-home-container-one-block-one-layer-one">
-      <div class="s-home-container-one-city-block">
-        <span>Миколаїв...</span>
-      </div>
-      <!-- TODO -->
+      <TownParameter />
       <NameSelect />
     </div>
     <div class="s-home-container-one-block-one-layer-two">

@@ -5,12 +5,11 @@ import {
   VFileInput,
   VForm,
   VInput,
-  VSelect,
   VRangeSlider,
+  VSelect,
   VTextField,
 } from 'vuetify/components';
 import { VDateInput } from 'vuetify/labs/VDateInput';
-import { aliases, mdi } from 'vuetify/iconsets/mdi';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';

@@ -1,6 +1,7 @@
 import {
   VApp,
   VAutocomplete,
+  VChip,
   VDialog,
   VFileInput,
   VForm,
@@ -20,6 +21,7 @@ export default defineNuxtPlugin((app) => {
     components: {
       VApp,
       VAutocomplete,
+      VChip,
       VDateInput,
       VDialog,
       VFileInput,

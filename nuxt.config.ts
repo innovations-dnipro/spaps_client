@@ -96,7 +96,7 @@ export default defineNuxtConfig({
       {
         families: {
           Montserrat: {
-            wght: [800],
+            wght: [800, 700],
           },
           Inter: {
             wght: [400, 500],

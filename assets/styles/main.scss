@@ -1,6 +1,7 @@
 @import './_variables';
 @import './_override/index.scss';
 
+@import './s-add-venue';
 @import './s-back.scss';
 @import './s-code-verification.scss';
 @import './s-disabled-btn.scss';
@@ -10,6 +11,7 @@
 @import './s-filter-list.scss';
 @import './s-filter-price-range.scss';
 @import './s-home.scss';
+@import './s-home-filter-town.scss';
 @import './s-loader.scss';
 @import './s-login.scss';
 @import './s-main.scss';

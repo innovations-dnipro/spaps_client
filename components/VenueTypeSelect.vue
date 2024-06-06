@@ -29,7 +29,7 @@ import { EVenueType } from '@spaps/enums/venue.type';
 const $i18n = useI18n();
 const route = useRoute();
 
-const initialRouteQuery = ref({});
+const isSearchPath = ref(route.path === '/search');
 const selected = ref(null);
 const items = [
   {
@@ -64,18 +64,16 @@ const items = [
 
 const onUpdate = () => {
   navigateTo({
-    path: '/search', //route.path,
+    path: '/search',
     query: {
-      ...initialRouteQuery.value,
+      ...route.query,
       venue_type: selected.value,
     },
   });
 };
 
 onMounted(() => {
-  initialRouteQuery.value = route.query;
-
-  if (route.query?.venue_type) {
+  if (isSearchPath && route.query?.venue_type) {
     selected.value = route.query?.venue_type;
   }
 });

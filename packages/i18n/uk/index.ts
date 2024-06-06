@@ -1,3 +1,4 @@
+import { home_messages } from './home.message';
 import { location_messages } from './location.messages';
 import { filter_messages } from './filter.messages';
 import { profile_data_management_messages } from './profile.data.management';
@@ -29,6 +30,7 @@ export const uk = {
   filter_messages,
   header_messages,
   input_messages,
+  home_messages,
   location_messages,
   login_messages,
   owners_office_messages,

@@ -15,7 +15,7 @@ export const location_messages = {
   [ELocation.KROPIVNITSKYI]: 'Кропівницький',
   [ELocation.LUHANSK]: 'Луганськ',
   [ELocation.LUTSK]: 'Луцьк',
-  [ELocation.LVIV]: 'Лвів',
+  [ELocation.LVIV]: 'Львів',
   [ELocation.MYKOLAIV]: 'Миколаїв',
   [ELocation.ODESA]: 'Одеса',
   [ELocation.POLTAVA]: 'Полтова',

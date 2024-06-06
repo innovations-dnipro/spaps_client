@@ -142,3 +142,339 @@
   line-height: 16px;
   text-transform: capitalize;
 }
+
+.s-home-venue-card {
+  width: 100%;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background: $--grey-3;
+}
+
+.s-home-venue-card-img-container {
+  height: 246px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.s-home-venue-card-img {
+  height: 246px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.s-home-venue-card-main {
+  width: 100%;
+  padding: 16px 16px 0 16px;
+}
+
+.s-home-venue-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s-home-venue-card-title {
+  color: $--blue-3;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+  width: 228px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.s-home-venue-card-rating-container {
+  display: flex;
+  align-items: center;
+
+  .s-home-venue-card-rating {
+    padding-right: 4px;
+    color: $--blue-3;
+    text-align: right;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .s-home-venue-card-rating-icon-container {
+    height: 20px;
+    width: 20px;
+
+    .ph {
+      font-size: 18px;
+      margin: auto 0;
+    }
+  }
+}
+
+.s-home-venue-card-address-line {
+  width: 228px;
+  overflow: hidden;
+  color: $--blue-grey;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.s-home-venue-card-lower-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 40px;
+}
+
+.s-home-venue-card-lower-line-guest-amount {
+  display: flex;
+  min-width: 24px;
+  padding: 4px 10px;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #f7fafc;
+  overflow: hidden;
+  color: $--blue-grey;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.s-home-venue-card-lower-line-price-container {
+  display: flex;
+  align-items: center;
+}
+
+.s-home-venue-card-lower-line-price-from {
+  color: $--blue-grey;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.s-home-venue-card-lower-line-price-value {
+  color: #202f40;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin-left: 8px;
+}
+
+.s-home-ad-details {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+  background: $--blue-4;
+  padding: 20px 16px 36px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.s-home-ad-details-title {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  max-width: 256px;
+}
+
+.s-home-ad-details-description {
+  color: $--grey-3;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 4px;
+  max-width: 256px;
+}
+
+.s-home-ad-details-button {
+  // margin-right: 34px;
+  margin-top: 24px;
+  display: flex;
+  height: 36px;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: #56e2f1;
+  position: relative;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:target {
+    filter: brightness(1.1);
+    box-shadow: 0px 2px 12px 0px rgba(5, 89, 253, 0.1);
+  }
+}
+
+.s-home-ad-details-button-circle {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: #56e2f1;
+  position: absolute;
+  right: -34px;
+
+  .ph.ph-drop {
+    font-size: 20px;
+    color: #011c38;
+  }
+}
+
+.s-home-ad-details-button-label {
+  color: #011c38;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+div[class^='s-home-ad-details-circle'] {
+  background-color: #3275a6;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.s-home-ad-details-circle-1 {
+  width: 10px;
+  height: 10px;
+  top: -1px;
+  right: 51px;
+}
+
+.s-home-ad-details-circle-2 {
+  width: 40px;
+  height: 40px;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ph {
+    font-size: 24px;
+    transform: rotate(6.814deg);
+    color: $--grey-3;
+  }
+}
+
+.s-home-ad-details-circle-3 {
+  width: 10px;
+  height: 10px;
+  top: 68px;
+  right: 10px;
+}
+
+.s-home-ad-details-circle-4 {
+  width: 32px;
+  height: 32px;
+  top: 114px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ph {
+    font-size: 16px;
+    transform: rotate(-8.202deg);
+    color: $--grey-3;
+  }
+}
+
+span[class^='s-home-ad-details-line'] {
+  position: absolute;
+  width: 4.147px;
+  bottom: 36px;
+  border-radius: 50px;
+}
+
+.s-home-ad-details-line-1 {
+  height: 15.01px;
+  background-color: #fff;
+  right: 82.35px;
+}
+
+.s-home-ad-details-line-2 {
+  height: 20.212px;
+  background-color: #56e2f1;
+  right: 74.06px;
+}
+
+.s-home-ad-details-line-3 {
+  height: 47px;
+  background-color: #1c4994;
+  right: 65.76px;
+}
+
+.s-home-ad-details-line-4 {
+  height: 24.06px;
+  background-color: #fff;
+  right: 57.43px;
+}
+
+.s-home-ad-details-line-5 {
+  height: 35.168px;
+  background-color: #56e2f1;
+  right: 49.18px;
+}
+
+.s-home-ad-details-line-6 {
+  height: 8.294px;
+  background-color: #1c4994;
+  right: 40.88px;
+}
+
+.s-home-ad-details-line-7 {
+  height: 15.01px;
+  background-color: #fff;
+  right: 32.59px;
+}
+
+.s-home-ad-details-line-8 {
+  height: 20.212px;
+  background-color: #56e2f1;
+  right: 24.29px;
+}
+
+.s-home-ad-details-line-9 {
+  height: 47px;
+  background-color: #1c4994;
+  right: 16px;
+}

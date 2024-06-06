@@ -62,7 +62,9 @@
 import { ELocation } from '@spaps/enums/location';
 
 const $i18n = useI18n();
+const route = useRoute();
 
+const isSearchPath = ref(route.path === '/search');
 const currentTown = ref(ELocation.KYIV);
 const selectedTown = ref(null);
 const dialog = ref(false);
@@ -99,8 +101,22 @@ const saveTownSelect = () => {
   currentTown.value = selectedTown.value;
   toggleDialog();
 
+  navigateTo({
+    path: '/search',
+    query: {
+      ...route.query,
+      location: (selectedTown.value || '').toLocaleLowerCase(),
+    },
+  });
+
   /**
    * TODO: if you are logged in, save the choice in BE User table or in token
    */
 };
+
+onMounted(() => {
+  if (isSearchPath && route.query?.location) {
+    selectedTown.value = route.query?.location;
+  }
+});
 </script>

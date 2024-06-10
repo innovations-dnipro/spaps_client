@@ -1,0 +1,33 @@
+span.v-chip {
+  display: flex;
+  min-width: 36px;
+  width: 100%;
+  padding: 4px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: $--grey-3;
+  color: $--blue-grey;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-left: 4px;
+  min-width: fit-content;
+}
+
+span.v-chip.v-chip--variant-outlined {
+  border: 1px solid #e1e6eb;
+  background-color: #f7fafc;
+  color: $--blue-3;
+}
+
+span.v-chip,
+span.v-chip.v-chip--variant-outlined {
+  &:focus,
+  &:hover {
+    color: $--blue-2;
+    border-color: $--blue-2;
+  }
+}

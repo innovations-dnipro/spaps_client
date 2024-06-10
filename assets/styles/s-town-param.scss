@@ -1,0 +1,131 @@
+.s-town-param {
+  display: flex;
+  align-items: center;
+}
+
+.s-town-param-label {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: #f7fafc;
+  border-bottom: 1px dashed #f7fafc;
+  width: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.s-town-param-dialog {
+  width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  background: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.s-town-param-header {
+  color: $--blue-3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  height: 24px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+
+.s-town-param-list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  color: $--blue-3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 24px;
+}
+
+.s-town-param-list-item-input {
+  width: 16px;
+  height: 16px;
+}
+
+.s-town-param-list-item-label {
+  padding-left: 8px;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.s-town-param-extend-btn-container {
+  width: 100%;
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.s-town-param-extend-btn {
+  font-size: 22px;
+}
+
+.s-town-param-extend-btn-up {
+  transform: rotate(180deg);
+}
+
+.s-town-param-submit-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+}
+
+.s-town-param-cancel-btn {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid $--blue-3;
+  width: calc(50% - 8px);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.s-town-param-submit-btn {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: $--blue-1;
+  color: #fff;
+  width: calc(50% - 8px);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.s-town-param-autocomplete-container {
+  width: 100%;
+  margin: 0;
+}
+
+.s-town-param-radio-list-container {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

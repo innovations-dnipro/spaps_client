@@ -1,0 +1,23 @@
+.s-hft {
+  display: flex;
+  padding-top: 16px;
+  margin-left: -4px;
+  width: calc(100vw - 32px);
+  max-width: calc(100vw - 32px);
+
+  & > span.v-chip.v-chip--variant-outlined {
+    min-width: 105px !important;
+    width: 105px !important;
+  }
+}
+
+.s-hft-scrollable {
+  margin-left: 4px;
+  display: flex;
+  width: calc(100vw - 121px);
+  overflow-x: scroll;
+
+  span.v-chip:first-child {
+    margin-left: 0;
+  }
+}

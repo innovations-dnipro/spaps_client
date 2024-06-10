@@ -1,16 +1,17 @@
 import {
   VApp,
   VAutocomplete,
+  VChip,
   VDialog,
   VFileInput,
   VForm,
   VInput,
-  VSelect,
+  VPagination,
   VRangeSlider,
+  VSelect,
   VTextField,
 } from 'vuetify/components';
 import { VDateInput } from 'vuetify/labs/VDateInput';
-import { aliases, mdi } from 'vuetify/iconsets/mdi';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
@@ -21,11 +22,13 @@ export default defineNuxtPlugin((app) => {
     components: {
       VApp,
       VAutocomplete,
+      VChip,
       VDateInput,
       VDialog,
       VFileInput,
       VForm,
       VInput,
+      VPagination,
       VRangeSlider,
       VSelect,
       VTextField,

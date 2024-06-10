@@ -1,3 +1,6 @@
+import { footer_messages } from './footer.messages';
+import { home_messages } from './home.message';
+import { location_messages } from './location.messages';
 import { filter_messages } from './filter.messages';
 import { profile_data_management_messages } from './profile.data.management';
 import { profile_safety_privacy_messages } from './profile.safety.privacy.messages';
@@ -19,14 +22,18 @@ import { profile_messages } from './profile.messages';
 import { profile_rentor_messages } from './profile.rentor.messages';
 import { date_input_messages } from './date.input.messages';
 import { email_change_messages } from './email.change';
+import { town_param_messages } from './town.param.messages';
 
 export const uk = {
   back_messages,
   date_input_messages,
   email_change_messages,
   filter_messages,
+  footer_messages,
   header_messages,
   input_messages,
+  home_messages,
+  location_messages,
   login_messages,
   owners_office_messages,
   password_change,
@@ -40,6 +47,7 @@ export const uk = {
   registration_messages,
   sauna_search_messages,
   server_error_messages,
+  town_param_messages,
   validation_error_messages,
   venue_type_messages,
 };

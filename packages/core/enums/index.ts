@@ -6,6 +6,7 @@ export * from './hotel';
 export * from './key';
 export * from './key.code';
 export * from './key.event';
+export * from './location';
 export * from './pool';
 export * from './role';
 export * from './spa';

@@ -1,0 +1,47 @@
+.v-autocomplete,
+.v-select {
+  .v-input__control .v-field .v-field__field {
+    .v-label.v-field-label {
+      color: #5c6d80 !important;
+      opacity: 1;
+    }
+
+    .v-field__input {
+      opacity: 1 !important;
+
+      & input {
+        color: #364759 !important;
+        letter-spacing: normal !important;
+        font-family: Inter;
+
+        &::placeholder {
+          color: #5c6d80 !important;
+          opacity: 1 !important;
+          letter-spacing: normal !important;
+          font-family: Inter;
+        }
+      }
+
+      .v-select__selection,
+      .v-autocomplete__selection {
+        height: initial;
+        color: #364759 !important;
+        opacity: 1 !important;
+        letter-spacing: normal !important;
+        font-family: Inter;
+
+        .v-select__selection-text,
+        .v-autocomplete__selection-text {
+          color: #364759 !important;
+          opacity: 1 !important;
+          letter-spacing: normal !important;
+          font-family: Inter;
+        }
+      }
+    }
+  }
+
+  .v-list-item {
+    color: #364759 !important;
+  }
+}

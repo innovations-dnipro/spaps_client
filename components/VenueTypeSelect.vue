@@ -3,10 +3,10 @@
     id="123"
     :items="items"
     class="s-vts"
-    :label="$t('venue_type_messages.select_venue_type')"
-    multiple
+    :placeholder="$t('venue_type_messages.select_venue_type')"
     persistent-hint
     v-model="selected"
+    color="primary"
     :hint="$t('venue_type_messages.select_venue_type')"
     :menu-props="{ contentClass: 's-vts-menu' }"
     @update:modelValue="onUpdate"
@@ -16,16 +16,21 @@
         <img src="/arrow_filled_down.svg" alt="arrow_filled_down" />
       </div>
     </template>
+    <template v-slot:item="{ item, props: { onClick } }">
+      <div class="s-town-param-list-item" @click="onClick">
+        <span class="s-town-param-list-item-label">{{ item.title }}</span>
+      </div>
+    </template>
   </VSelect>
 </template>
 <script setup lang="ts">
-import { EVenueType } from '../packages/core/enums/venue.type';
+import { EVenueType } from '@spaps/enums/venue.type';
 
 const $i18n = useI18n();
 const route = useRoute();
 
-const initialRouteQuery = ref({});
-const selected = ref([]);
+const isSearchPath = ref(route.path === '/search');
+const selected = ref(null);
 const items = [
   {
     title: $i18n.t(`filter_messages.${EVenueType.pool}`),
@@ -59,19 +64,17 @@ const items = [
 
 const onUpdate = () => {
   navigateTo({
-    path: '/search', //route.path,
+    path: '/search',
     query: {
-      ...initialRouteQuery.value,
-      venue_type: selected.value.join(','),
+      ...route.query,
+      venue_type: selected.value,
     },
   });
 };
 
 onMounted(() => {
-  initialRouteQuery.value = route.query;
-
-  if (route.query?.venue_type) {
-    selected.value = route.query?.venue_type.split(',');
+  if (isSearchPath && route.query?.venue_type) {
+    selected.value = route.query?.venue_type;
   }
 });
 </script>

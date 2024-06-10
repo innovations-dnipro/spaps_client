@@ -1,6 +1,7 @@
 @import './_variables';
 @import './_override/index.scss';
 
+@import './s-add-venue';
 @import './s-back.scss';
 @import './s-code-verification.scss';
 @import './s-disabled-btn.scss';
@@ -9,11 +10,14 @@
 @import './s-filter-guest-number.scss';
 @import './s-filter-list.scss';
 @import './s-filter-price-range.scss';
+@import './s-footer.scss';
 @import './s-home.scss';
+@import './s-home-filter-town.scss';
 @import './s-loader.scss';
 @import './s-login.scss';
 @import './s-main.scss';
 @import './s-main-header.scss';
+@import './s-name-select';
 @import './s-profile.scss';
 @import './s-profile-avatar.scss';
 @import './s-profile-contact-details.scss';
@@ -21,8 +25,10 @@
 @import './s-profile-logout.scss';
 @import './s-profile-rentor-objects';
 @import './s-profile-settings';
+@import './s-promo-card';
 @import './s-registration.scss';
-@import './s-sauna-search';
+@import './s-sort-line.scss';
+@import './s-town-param.scss';
 @import './s-venue-type-select';
 @import './s-tabs.scss';
 

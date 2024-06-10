@@ -1,12 +1,7 @@
-ARG NODE_VERSION=19-alpine 
-FROM node:$NODE_VERSION as BUILD_IMAGE
-WORKDIR /frontend
-COPY package*.json ./
+FROM node:18.17.0-alpine as build
+WORKDIR /app
+COPY . /app
 RUN npm i
-COPY ./ ./
-RUN npm run start
-FROM nginx:latest
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=BUILD_IMAGE /frontend/dist /usr/share/nginx/html
-COPY --from=BUILD_IMAGE /frontend/deploy/nginx/default.conf /etc/nginx/conf.d/default.conf
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "run", "start:prod"]

@@ -1,20 +1,18 @@
 version: "3.8"
 
 services:
-  company-landing:
-    container_name: company-landing
-    image: registry.it-flumx.com/company-landing:latest
-    expose:
-      - "80"
+  spaps-client:
+    container_name: spaps-client
+    build: '.'
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.company-landing.rule=Host(`it-flumx.com`) && PathPrefix(`/`)"
-      - "traefik.http.routers.company-landing.entrypoints=websecure"
-      - "traefik.http.routers.company-landing.tls.certresolver=myresolver"
-      - "traefik.http.routers.company-landing.service=company-landing"
-      - "traefik.http.services.company-landing.loadbalancer.server.port=80"
+      - "traefik.http.routers.spaps-client.rule=Host(`client-ml.the-displaycontrol.com`) && PathPrefix(`/`)"
+      - "traefik.http.routers.spaps-client.entrypoints=websecure"
+      - "traefik.http.routers.spaps-client.tls.certresolver=myresolver"
+      - "traefik.http.routers.spaps-client.service=spaps-client"
+      - "traefik.http.services.spaps-client.loadbalancer.server.port=3000"
     networks:
-      - registry_default
+      - traefik
 networks:
-  registry_default:
+  traefik:
     external: true

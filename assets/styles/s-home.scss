@@ -1,5 +1,6 @@
 .s-home {
-  padding: 16px 16px 110px 16px;
+  width: 100vw;
+  padding: 16px 16px 228px 16px;
 }
 
 .s-home-container-one {
@@ -477,4 +478,62 @@ span[class^='s-home-ad-details-line'] {
   height: 47px;
   background-color: #1c4994;
   right: 16px;
+}
+
+.s-home-promotion {
+  display: flex;
+  margin-left: -8px;
+  width: calc(100vw - 24px);
+  overflow-x: auto;
+}
+
+.s-home-pagination-container {
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+.s-home-reliability {
+  height: 228px;
+  width: calc(100vw - 32px);
+  margin-top: 28px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background: $--grey-3;
+  position: relative;
+}
+
+.s-home-reliability-title {
+  color: $--blue-3;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.36px;
+  z-index: 1;
+}
+
+.s-home-reliability-text {
+  margin-top: 12px;
+  color: $--blue-grey;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  z-index: 1;
+}
+
+.s-home-reliability-btn-container {
+  margin-top: 24px;
+  z-index: 1;
+}
+
+.s-home-reliability-background {
+  position: absolute;
+  top: -16px;
+  left: -18px;
 }

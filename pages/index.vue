@@ -90,7 +90,7 @@
       <div class="s-home-ad-details-description">
         {{ $t('home_messages.how_many_people') }}
       </div>
-      <button class="s-home-ad-details-button">
+      <button class="s-home-ad-details-button" @click="onAdDetailsButtonClick">
         <span class="s-home-ad-details-button-label">{{
           $t('home_messages.register')
         }}</span>
@@ -98,7 +98,6 @@
           <i class="ph ph-drop"></i>
         </div>
       </button>
-
       <div class="s-home-ad-details-circle-1"></div>
       <div class="s-home-ad-details-circle-2">
         <i class="ph ph-user-focus"></i>
@@ -107,7 +106,6 @@
       <div class="s-home-ad-details-circle-4">
         <i class="ph ph-timer"></i>
       </div>
-
       <span class="s-home-ad-details-line-1"></span>
       <span class="s-home-ad-details-line-2"></span>
       <span class="s-home-ad-details-line-3"></span>
@@ -119,12 +117,47 @@
       <span class="s-home-ad-details-line-9"></span>
     </div>
     <HomeResultVenueList :venueList="lowerVenueList" />
+    <div class="s-home-pagination-container">
+      <Pagination />
+    </div>
+    <div class="s-home-subtitle mt-7 mb-5">
+      {{ $t('home_messages.promotions') }}
+    </div>
+    <div class="s-home-promotion">
+      <PromoCard />
+      <PromoCard />
+      <PromoCard />
+      <PromoCard />
+    </div>
+    <div class="s-home-reliability">
+      <div class="s-home-reliability-title">
+        {{ $t('home_messages.reservation_reliability') }}
+      </div>
+      <div class="s-home-reliability-text">
+        {{ $t('home_messages.plan_your_vacation') }}
+      </div>
+      <div class="s-home-reliability-btn-container">
+        <button class="s-main-header-spa-owners">
+          <span class="s-main-header-spa-owners-label">
+            {{ $t('home_messages.select_sauna_now') }}
+          </span>
+          <div class="s-main-header-spa-owners-circle">
+            <i class="ph ph-drop"></i>
+          </div>
+        </button>
+      </div>
+      <img
+        src="/home-reliability-circles.svg"
+        class="s-home-reliability-background"
+      />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { filter_messages } from '../packages/i18n/uk/filter.messages';
 import { EVenueType } from '../packages/core/enums/venue.type';
 
+const page = ref(1);
 const venueList = ref([
   {
     title: 'Beauty SPA Center Impulse',
@@ -183,6 +216,12 @@ const onVenueTypeClick = (venueTypes: string[]) => {
     query: {
       venue_type: venueTypes.join(','),
     },
+  });
+};
+
+const onAdDetailsButtonClick = () => {
+  navigateTo({
+    path: '/registration',
   });
 };
 </script>

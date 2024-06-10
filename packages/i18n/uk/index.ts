@@ -1,3 +1,4 @@
+import { footer_messages } from './footer.messages';
 import { home_messages } from './home.message';
 import { location_messages } from './location.messages';
 import { filter_messages } from './filter.messages';
@@ -28,6 +29,7 @@ export const uk = {
   date_input_messages,
   email_change_messages,
   filter_messages,
+  footer_messages,
   header_messages,
   input_messages,
   home_messages,

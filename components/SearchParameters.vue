@@ -5,11 +5,11 @@
       <NameSelect />
     </div>
     <div class="s-home-container-one-block-one-layer-two">
-      <div class="s-fb-container">
-        <FilterButton v-if="showsFilterButton" />
-      </div>
       <div class="s-home-spa-select-container">
         <VenueTypeSelect />
+      </div>
+      <div class="s-fb-container">
+        <FilterButton v-if="showsFilterButton" />
       </div>
     </div>
   </div>

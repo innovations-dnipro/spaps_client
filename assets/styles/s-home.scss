@@ -285,6 +285,100 @@
   margin-left: 8px;
 }
 
+.s-home-venue-line-card {
+  width: 100%;
+  height: 88px;
+  display: flex;
+  padding-right: 12px;
+  align-items: center;
+  border-radius: 8px;
+  background: #e9edf2;
+  margin-top: 12px;
+
+  .s-home-venue-line-card-photo {
+    width: 68px;
+    height: 88px;
+    flex-shrink: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+  }
+
+  .s-home-venue-line-card-main {
+    padding: 8px 0 8px 12px;
+    width: 100%;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .s-home-venue-line-card-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .s-home-venue-card-rating-container {
+      width: 48px;
+      height: 20px;
+
+      .s-home-venue-card-rating {
+        color: $--blue-3;
+        text-align: right;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+      }
+
+      .s-home-venue-card-rating-icon-container {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  .s-home-venue-line-card-title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: $--blue-3;
+    text-overflow: ellipsis;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+    width: 149px;
+    height: 40px;
+  }
+
+  .s-home-venue-line-card-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .s-home-venue-line-card-address {
+    width: 132px;
+    max-width: 132px;
+    overflow: hidden;
+    color: $--blue-grey;
+    text-overflow: ellipsis;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    white-space: nowrap;
+  }
+}
+
 .s-home-ad-details {
   width: 100%;
   border-radius: 12px;

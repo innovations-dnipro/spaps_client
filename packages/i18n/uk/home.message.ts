@@ -17,4 +17,6 @@ export const home_messages = {
   plan_your_vacation: `Плануйте відпочинок із впевненістю, що обрані вами місця будуть
   закріплені тільки за вами`,
   select_sauna_now: 'Обрати парну зараз',
+  search_result: 'Результати пошуку',
+  viewed_venues: 'Переглянуті вами об’єкти',
 };

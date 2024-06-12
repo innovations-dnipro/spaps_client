@@ -1,0 +1,240 @@
+.s-search {
+  .s-search-sort-line {
+    display: flex;
+    margin-top: 12px;
+    justify-content: space-between;
+  }
+
+  .s-search-sort-btn {
+    width: 192px !important;
+    max-width: 192px !important;
+    height: 36px !important;
+
+    .v-field__overlay {
+      border-radius: 100px !important;
+      border: 1px solid #e1e6eb !important;
+      background: #f7fafc !important;
+    }
+
+    .v-input {
+      width: 192px !important;
+      max-width: 192px !important;
+      height: 36px !important;
+    }
+
+    .v-field {
+      width: 192px !important;
+      max-width: 192px !important;
+      height: 36px !important;
+    }
+
+    .v-field__field {
+      background-color: transparent;
+      border: none;
+    }
+
+    .v-field__input {
+      width: 192px !important;
+      max-width: 192px !important;
+      height: 36px !important;
+      min-height: 36px !important;
+      border: none;
+      padding: 0 2px 0 16px;
+    }
+
+    & > input {
+      width: 240px;
+      overflow: hidden;
+      color: #364759;
+      text-overflow: ellipsis;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: #5c6d80;
+      font-feature-settings: 'clig' off, 'liga' off;
+      height: 36px;
+    }
+
+    .v-select__selection {
+      .v-select__selection-text {
+        color: #364759;
+      }
+    }
+
+    .s-vts-inner-icon {
+      width: 16px;
+      height: 16px;
+      z-index: 1;
+
+      .v-select__menu-icon {
+        display: none;
+      }
+
+      & > img {
+        transition: transform 0.25s;
+      }
+    }
+
+    .v-field--appended {
+      padding-inline-end: 12px;
+    }
+
+    .v-input__details {
+      display: none;
+    }
+
+    .v-select__menu-icon {
+      display: none;
+    }
+
+    .v-field__append-inner {
+      .mdi-menu-down {
+        display: none;
+      }
+    }
+
+    .v-field__outline {
+      &::after {
+        border-radius: 18px !important;
+      }
+    }
+
+    .v-field__input {
+      // background: #fff;
+      // border: 1px solid #e1e6eb;
+      // background: #f7fafc;
+      padding: 8px;
+    }
+
+    &.v-select--active-menu {
+      .s-vts-inner-icon > img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .s-search-render-line-btn,
+  .s-search-render-tile-btn {
+    border-radius: 8px;
+    border: 1px solid #e9edf2;
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e9edf2;
+    background-color: transparent;
+
+    & .ph {
+      color: #606c81;
+    }
+
+    &.s-search-render-btn-selected {
+      border: 1px solid #e9edf2;
+      background: #e9edf2;
+
+      & .ph {
+        color: #061b40;
+      }
+    }
+  }
+
+  .s-search-render-tile-btn {
+    margin-left: 4px;
+  }
+
+  .s-search-sort-render-btn-group {
+    display: flex;
+  }
+
+  .s-search-title {
+    color: $--blue-3;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.45px;
+    padding: 28px 0 6px 0;
+  }
+
+  .s-search-viewed {
+    height: 264px;
+    width: calc(100vw - 8px);
+    display: flex;
+    margin-left: -8px;
+    overflow: auto;
+  }
+
+  .s-search-viewed-card {
+    display: flex;
+    width: 244px;
+    min-width: 212px;
+    max-width: 244px;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: $--grey-3;
+    margin-left: 8px;
+    overflow: hidden;
+  }
+
+  .s-search-viewed-card-img {
+    height: 184px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: red;
+  }
+
+  .s-search-viewed-main {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 12px 16px 12px;
+  }
+
+  .s-search-viewed-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .s-search-viewed-title {
+    height: 20px;
+    width: 164px;
+    overflow: hidden;
+    color: $--blue-3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+  }
+
+  .s-search-viewed-lower-line {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+
+  .s-search-viewed-lower-line-price-value {
+    color: $--blue-3;
+    text-align: right;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+  }
+}

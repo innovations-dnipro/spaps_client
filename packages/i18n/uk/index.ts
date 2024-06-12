@@ -1,3 +1,4 @@
+import { sort_messages } from './sort.messages';
 import { footer_messages } from './footer.messages';
 import { home_messages } from './home.message';
 import { location_messages } from './location.messages';
@@ -47,6 +48,7 @@ export const uk = {
   registration_messages,
   sauna_search_messages,
   server_error_messages,
+  sort_messages,
   town_param_messages,
   validation_error_messages,
   venue_type_messages,

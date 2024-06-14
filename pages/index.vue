@@ -15,7 +15,11 @@
     <div class="s-home-container-two">
       <div
         class="s-home-container-two-column-one"
-        @click="onVenueTypeClick([EVenueType.pool, EVenueType.water_park])"
+        :class="{
+          's-home-container-two-column-selected':
+            currentVenueType === poolWaterPark,
+        }"
+        @click="onVenueTypeClick(poolWaterPark)"
       >
         <img src="/home_pools.png" alt="swimming_pools" />
         <span class="s-home-container-two-column-title"
@@ -25,7 +29,11 @@
       </div>
       <div
         class="s-home-container-two-column-two"
-        @click="onVenueTypeClick([EVenueType.spa_center, EVenueType.hotel])"
+        :class="{
+          's-home-container-two-column-selected':
+            currentVenueType === spaCenterHotel,
+        }"
+        @click="onVenueTypeClick(spaCenterHotel)"
       >
         <img src="/home_spa_centers.png" alt="spa_centers" />
         <span class="s-home-container-two-column-title"
@@ -36,7 +44,11 @@
       <div class="s-home-container-two-column-three">
         <div
           class="s-home-container-two-column-three-block-one"
-          @click="onVenueTypeClick([EVenueType.cottage])"
+          :class="{
+            's-home-container-two-column-selected':
+              currentVenueType === EVenueType.cottage,
+          }"
+          @click="onVenueTypeClick(EVenueType.cottage)"
         >
           <img src="/home_cottages.png" alt="spa_centers" />
           <span class="s-home-container-two-column-title">{{
@@ -45,7 +57,11 @@
         </div>
         <div
           class="s-home-container-two-column-three-block-two"
-          @click="onVenueTypeClick([EVenueType.tank, EVenueType.bath])"
+          :class="{
+            's-home-container-two-column-selected':
+              currentVenueType === tankBath,
+          }"
+          @click="onVenueTypeClick(tankBath)"
         >
           <img src="/home_baths.png" alt="spa_centers" />
           <span class="s-home-container-two-column-title"
@@ -82,7 +98,11 @@
     </div>
 
     <HomeFilterTown />
-    <HomeResultVenueList :venueList="upperVenueList" />
+    <div id="result-venue-list-anchor"></div>
+    <HomeResultVenueList
+      :venueList="upperVenueList"
+      id="home_venue_card_list"
+    />
     <AdDetails />
     <HomeResultVenueList :venueList="lowerVenueList" />
     <div class="s-home-pagination-container">
@@ -170,6 +190,11 @@ const venueList = ref([
     minPrice: 500,
   },
 ]);
+const route = useRoute();
+const currentVenueType = ref('');
+const poolWaterPark = ref(`${EVenueType.pool},${EVenueType.water_park}`);
+const spaCenterHotel = ref(`${EVenueType.spa_center},${EVenueType.hotel}`);
+const tankBath = ref(`${EVenueType.tank},${EVenueType.bath}`);
 
 const upperVenueList = computed(() => {
   return venueList.value.slice(0, 3);
@@ -178,14 +203,45 @@ const lowerVenueList = computed(() => {
   return venueList.value.slice(3);
 });
 
-const onVenueTypeClick = (venueTypes: string[]) => {
+const onVenueTypeClick = (venueTypes: string) => {
+  const isCurrentVenueType = route.query.venue_type === venueTypes;
+  const newQuery = {
+    ...route.query,
+  };
+
+  if (isCurrentVenueType && newQuery.venue_type) {
+    delete newQuery.venue_type;
+    currentVenueType.value = '';
+  }
+
+  if (!isCurrentVenueType) {
+    newQuery.venue_type = venueTypes;
+    currentVenueType.value = venueTypes;
+  }
+
   navigateTo({
     path: '/',
-    query: {
-      venue_type: venueTypes.join(','),
-    },
+    query: newQuery,
   });
+
+  if (!isCurrentVenueType) {
+    document
+      .getElementById('result-venue-list-anchor')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  }
 };
+
+onMounted(() => {
+  currentVenueType.value = route.query.venue_type;
+
+  if (Object.keys(route.query).length > 0) {
+    setTimeout(() => {
+      document
+        .getElementById('result-venue-list-anchor')
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+});
 </script>
 
 <style scoped lang="scss">

@@ -7,7 +7,7 @@
   </div>
 
   <VDialog v-model="filterStore.showsFilters">
-    <FilterList />
+    <FilterList @close-dialog="toggleFilterDialog" />
   </VDialog>
 </template>
 <script setup lang="ts">

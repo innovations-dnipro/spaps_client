@@ -1,17 +1,36 @@
 <template>
   <div v-if="filterStore.showsFilters" class="s-fl">
-    <FilterVenueSubtype
-      v-for="item in filters.venueTypes"
-      :venueType="item"
-      :key="item"
-      :queryParams="queryParams"
-      :path="route.path"
-      @updateSubtype="updateSubtype"
-    />
-    <FilterDate @updateDate="updateDate" />
-    <FilterGuestNumber @updateGuestNumber="updateGuestNumber" />
-    <FilterPriceRange />
-    <div class="s-fl-footer"></div>
+    <div class="s-fl-top">
+      <div class="s-fl-close-btn" @click="toggleDialog">
+        <i class="ph ph-x"></i>
+      </div>
+      <div class="s-fl-title">
+        {{ $t('filter_messages.advanced_selection_filter') }}
+      </div>
+    </div>
+
+    <div class="s-fl-main">
+      <FilterVenueSubtype
+        v-for="item in filters.venueTypes"
+        :venueType="item"
+        :key="item"
+        :queryParams="queryParams"
+        :path="route.path"
+        @updateSubtype="updateSubtype"
+      />
+      <FilterDate @updateDate="updateDate" />
+      <FilterGuestNumber @updateGuestNumber="updateGuestNumber" />
+      <FilterPriceRange />
+    </div>
+
+    <div class="s-fl-footer">
+      <button class="s-fl-footer-show-btn">
+        {{ $t('filter_messages.show_search_result') }}
+      </button>
+      <button class="s-fl-footer-clear-btn" @click="toggleDialog">
+        {{ $t('filter_messages.clear_filters') }}
+      </button>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -20,8 +39,6 @@ import type { Nullable } from '../packages/core/types/nullable';
 import { isEmptyArray } from '../packages/utils/is.empty.array';
 import { isNullOrUndefined } from '../packages/utils/is.null.or.undefined';
 import { useFilterStore } from '../stores/filter';
-
-//TODO: initial values
 
 interface IFilters {
   venueTypes: string[];
@@ -58,6 +75,7 @@ const filters: Ref<IFilters> = ref({
   adultNumber: null,
   childrenNumber: null,
 });
+const emit = defineEmits(['close-dialog']);
 
 const searchVenues = () => {
   const searchFilters: Partial<IFilters> = {};
@@ -114,6 +132,9 @@ const updateGuestNumber = ({
   };
 
   searchVenues();
+};
+const toggleDialog = () => {
+  emit('close-dialog');
 };
 
 onMounted(() => {

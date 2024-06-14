@@ -2,7 +2,7 @@
   <div
     class="s-home-venue-card"
     v-if="props.renderType === ESearchListRenderType.TILE"
-    v-for="venue in props.venueList"
+    v-for="(venue, index) in props.venueList"
   >
     <div class="s-home-venue-card-img-container">
       <img

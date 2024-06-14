@@ -60,6 +60,7 @@
       <PromoCard />
     </div>
     <div class="s-search-title">{{ $t('home_messages.search_result') }}</div>
+    <div id="result-venue-list-anchor"></div>
     <HomeResultVenueList :venueList="venueList" :renderType="listRenderType" />
     <div class="s-home-pagination-container">
       <Pagination />
@@ -188,4 +189,14 @@ const onUpdate = (value: string) => {
 const onRenderTypeButtonClick = (value: ESearchListRenderType) => {
   listRenderType.value = value;
 };
+
+onMounted(() => {
+  if (Object.keys(route.query).length > 0) {
+    setTimeout(() => {
+      document
+        .getElementById('result-venue-list-anchor')
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+});
 </script>

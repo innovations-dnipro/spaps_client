@@ -1,7 +1,7 @@
 <template>
   <div class="s-town-param">
     <div class="s-town-param-label" @click="toggleDialog">
-      {{ $t(`location_messages.${currentTown}`) }}
+      {{ currentTown }}
     </div>
   </div>
   <VDialog v-model="dialog">
@@ -63,10 +63,10 @@ import { ELocation } from '@spaps/enums/location';
 
 const $i18n = useI18n();
 const route = useRoute();
-
+const initialTown = $i18n.t(`location_messages.${ELocation.KYIV}`);
 const isSearchPath = ref(route.path === '/search');
-const currentTown = ref(ELocation.KYIV);
-const selectedTown = ref(null);
+const currentTown = ref(initialTown);
+const selectedTown = ref(ELocation.KYIV);
 const dialog = ref(false);
 const isTownListShort = ref(true);
 
@@ -98,7 +98,7 @@ const cancelTownSelect = () => {
   toggleDialog();
 };
 const saveTownSelect = () => {
-  currentTown.value = selectedTown.value;
+  currentTown.value = $i18n.t(`location_messages.${selectedTown.value}`);
   toggleDialog();
 
   navigateTo({
@@ -108,15 +108,14 @@ const saveTownSelect = () => {
       location: (selectedTown.value || '').toLocaleLowerCase(),
     },
   });
-
-  /**
-   * TODO: if you are logged in, save the choice in BE User table or in token
-   */
 };
 
 onMounted(() => {
-  if (isSearchPath && route.query?.location) {
-    selectedTown.value = route.query?.location;
+  if (isSearchPath.value && route.query?.location) {
+    const town = (route.query?.location || '').toUpperCase();
+
+    selectedTown.value = town;
+    currentTown.value = $i18n.t(`location_messages.${town}`);
   }
 });
 </script>

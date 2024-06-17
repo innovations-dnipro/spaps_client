@@ -59,8 +59,12 @@
       <PromoCard />
       <PromoCard />
     </div>
-    <div class="s-search-title">{{ $t('home_messages.search_result') }}</div>
-    <div id="result-venue-list-anchor"></div>
+
+    <div class="s-search-title">
+      <div id="result-venue-list-anchor"></div>
+
+      {{ $t('home_messages.search_result') }}
+    </div>
     <HomeResultVenueList :venueList="venueList" :renderType="listRenderType" />
     <div class="s-home-pagination-container">
       <Pagination />

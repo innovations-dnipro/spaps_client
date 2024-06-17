@@ -23,12 +23,15 @@
           v-model="selectedSubtypes"
           :label="subtype"
           :value="subtype"
-          name="subtype"
+          :name="`${subtype}_venue_subtype`"
           @input="onSubtypeInput"
+          :id="`${subtype}_venue_subtype`"
         />
-        <span class="s-flst-list-item-label">{{
-          $t(`filter_messages.${subtype}`)
-        }}</span>
+        <label
+          class="s-flst-list-item-label"
+          :for="`${subtype}_venue_subtype`"
+          >{{ $t(`filter_messages.${subtype}`) }}</label
+        >
       </div>
     </div>
   </div>
@@ -38,18 +41,19 @@ import { EVenueType } from '@spaps/enums';
 import { VenueSubtype } from '@spaps/values';
 
 const props = defineProps({
-  //TODO: investigate type
   venueType: {
     type: String,
+  },
+  venueSubtypes: {
+    type: Array,
+    default: [],
   },
   queryParams: { type: Object },
   path: { type: String },
 });
 const emit = defineEmits(['updateSubtype']);
-
 const showsList: Ref<boolean> = ref(false);
 const selectedSubtypes: Ref<string[]> = ref([]);
-
 const icon = computed(() => {
   return showsList.value ? 'ph-caret-circle-up' : 'ph-caret-circle-down';
 });
@@ -77,4 +81,19 @@ const onSubtypeInput = (event: Event) => {
     venueType: props.venueType,
   });
 };
+
+watch(
+  () => props.venueSubtypes,
+  (venueSubtypes) => {
+    if (Array.isArray(venueSubtypes) && venueSubtypes.length) {
+      selectedSubtypes.value = venueSubtypes as string[];
+      return;
+    }
+
+    selectedSubtypes.value = [];
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

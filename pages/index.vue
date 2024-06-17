@@ -94,11 +94,11 @@
     </div>
 
     <div class="s-home-subtitle">
+      <div id="result-venue-list-anchor"></div>
       {{ $t('home_messages.popular_offers') }}
     </div>
 
     <HomeFilterTown />
-    <div id="result-venue-list-anchor"></div>
     <HomeResultVenueList
       :venueList="upperVenueList"
       id="home_venue_card_list"

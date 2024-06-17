@@ -18,11 +18,12 @@
           :label="$t('input_messages.from')"
           v-model="priceRange[0]"
           suffix="₴"
-          @keypress="onKeyPress"
           color="primary"
           hide-details="auto"
         ></VTextField>
-        <!-- :rules="[
+        <!-- 
+          @keypress="onKeyPress"
+          :rules="[
             minValidator(0)(priceRange[0]),
             maxValidator(priceRange[1] - 300)(priceRange[0]),
           ]" -->
@@ -31,18 +32,21 @@
           :label="$t('input_messages.until')"
           v-model="priceRange[1]"
           suffix="₴"
-          @keypress="onKeyPress"
           color="primary"
           hide-details="auto"
         ></VTextField>
-        <!-- :rules="[ minValidator(priceRange[0] + 300)(priceRange[1]),
-        maxValidator(10000)(priceRange[1]), ]" -->
+        <!-- 
+          @keypress="onKeyPress"
+          :rules="[
+            minValidator(priceRange[0] + 300)(priceRange[1]),
+            maxValidator(10000)(priceRange[1]),
+          ]" -->
       </div>
       <div class="s-fpr-slider-container">
         <VRangeSlider
           :max="10000"
           :min="0"
-          :step="300"
+          :step="100"
           v-model="priceRange"
           color="primary"
           hide-details="auto"
@@ -55,12 +59,21 @@
   </div>
 </template>
 <script setup lang="ts">
-const { minValidator, maxValidator } = useValidators();
-const emit = defineEmits(['updateGuestNumber']);
+const props = defineProps({
+  priceTo: {
+    type: [Number, null],
+    default: null,
+  },
+  priceFrom: {
+    type: [Number, null],
+    default: null,
+  },
+});
+// const { minValidator, maxValidator } = useValidators();
+const emit = defineEmits(['updatePriceRange']);
 const showsList: Ref<boolean> = ref(false);
 const priceRange: Ref<number[]> = ref([0, 10000]);
 const initialRange: Ref<number[]> = ref([0, 10000]);
-
 const icon = computed(() => {
   return showsList.value ? 'ph-caret-circle-up' : 'ph-caret-circle-down';
 });
@@ -68,17 +81,29 @@ const icon = computed(() => {
 const onCaretClick = () => {
   showsList.value = !showsList.value;
 };
-const onKeyPress = (event: KeyboardEvent) => {
-  if (!Number.isFinite(Number(event.key))) {
-    event.preventDefault();
-    return;
-  }
+// const onKeyPress = (event: KeyboardEvent) => {
+//   console.log('keypress');
+
+//   if (!Number.isFinite(Number(event.key))) {
+//     event.preventDefault();
+//     return;
+//   }
+
+//   saveRange();
+// };
+const saveRange = () => {
+  emit('updatePriceRange', {
+    priceFrom: Number(priceRange.value[0]),
+    priceTo: Number(priceRange.value[1]),
+  });
 };
 const onStart = (rangeValue: number[]) => {
   initialRange.value = rangeValue;
 };
 const onEnd = (rangeValue: number[]) => {
   initialRange.value = rangeValue;
+
+  saveRange();
 };
 const updateMV = (rangeValue: number[]) => {
   const fromValue = rangeValue[0];
@@ -111,4 +136,34 @@ const updateMV = (rangeValue: number[]) => {
     priceRange.value = [newFromValue, toValue];
   }
 };
+
+watch(
+  () => props.priceFrom,
+  (priceFrom) => {
+    if (priceFrom >= 0 && priceFrom <= props.priceTo - 300) {
+      priceRange.value[0] = priceFrom;
+      return;
+    }
+
+    priceRange.value[0] = 0;
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  () => props.priceTo,
+  (priceTo) => {
+    if (priceTo <= 10000 && priceTo >= props.priceFrom + 300) {
+      priceRange.value[1] = priceTo;
+      return;
+    }
+
+    priceRange.value[1] = 10000;
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

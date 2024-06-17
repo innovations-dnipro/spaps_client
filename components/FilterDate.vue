@@ -51,6 +51,14 @@
 <script setup lang="ts">
 import type { Nullable } from '../packages/core/types/nullable';
 
+const props = defineProps({
+  dateFrom: {
+    type: [Date, String, null],
+  },
+  dateTo: {
+    type: [Date, String, null],
+  },
+});
 const emit = defineEmits(['updateDate']);
 const showsList: Ref<boolean> = ref(false);
 const dateFrom: Ref<Nullable<Date>> = ref(null);
@@ -75,8 +83,36 @@ const onDateInputKeyPress = (event: KeyboardEvent) => {
 };
 const updateDate = () => {
   return emit('updateDate', {
-    dateFrom: dateFrom.value,
-    dateTo: dateTo.value,
+    ...(dateFrom.value instanceof Date && !isNaN(dateFrom.value)
+      ? { dateFrom: dateFrom.value }
+      : {}),
+
+    ...(dateTo.value instanceof Date && !isNaN(dateTo.value)
+      ? { dateTo: dateTo.value }
+      : {}),
   });
 };
+
+watch(
+  () => props.dateFrom,
+  (propsDateFrom) => {
+    if (propsDateFrom) {
+      dateFrom.value = new Date(propsDateFrom);
+      return;
+    }
+
+    dateFrom.value = null;
+  }
+);
+watch(
+  () => props.dateTo,
+  (propsDateTo) => {
+    if (propsDateTo) {
+      dateTo.value = new Date(propsDateTo);
+      return;
+    }
+
+    dateTo.value = null;
+  }
+);
 </script>

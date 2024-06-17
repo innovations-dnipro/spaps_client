@@ -101,6 +101,10 @@ const saveTownSelect = () => {
   currentTown.value = $i18n.t(`location_messages.${selectedTown.value}`);
   toggleDialog();
 
+  document
+    .getElementById('result-venue-list-anchor')
+    ?.scrollIntoView({ behavior: 'smooth' });
+
   navigateTo({
     path: '/search',
     query: {
@@ -116,6 +120,10 @@ onMounted(() => {
 
     selectedTown.value = town;
     currentTown.value = $i18n.t(`location_messages.${town}`);
+
+    document
+      .getElementById('result-venue-list-anchor')
+      ?.scrollIntoView({ behavior: 'smooth' });
   }
 });
 </script>

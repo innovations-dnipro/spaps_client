@@ -6,7 +6,7 @@
     </div>
     <div class="s-home-container-one-block-one-layer-two">
       <div class="s-home-spa-select-container">
-        <VenueTypeSelect />
+        <VenueTypeSelect @show-filter-button="showFilterButton" />
       </div>
       <div class="s-fb-container">
         <FilterButton v-if="showsFilterButton" />
@@ -18,8 +18,11 @@
 import { EVenueType } from '@spaps/core/enums/venue.type';
 
 const route = useRoute();
-
 const showsFilterButton = ref(false);
+
+const showFilterButton = () => {
+  showsFilterButton.value = true;
+};
 
 onMounted(() => {
   const isSearchRoute = route.path === '/search';

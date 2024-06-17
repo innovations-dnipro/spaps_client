@@ -28,8 +28,7 @@ import { EVenueType } from '@spaps/enums/venue.type';
 
 const $i18n = useI18n();
 const route = useRoute();
-
-const isSearchPath = ref(route.path === '/search');
+const emit = defineEmits(['show-filter-button']);
 const selected = ref(null);
 const items = [
   {
@@ -70,9 +69,13 @@ const onUpdate = () => {
       venue_type: selected.value,
     },
   });
+
+  emit('show-filter-button');
 };
 
 onMounted(() => {
+  const isSearchPath = route.path === '/search';
+
   if (isSearchPath && route.query?.venue_type) {
     selected.value = route.query?.venue_type;
   }

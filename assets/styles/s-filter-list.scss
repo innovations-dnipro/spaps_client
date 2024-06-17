@@ -1,6 +1,12 @@
 .s-fl {
+  height: 100vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.s-fl-main {
   min-width: 328px;
   width: 100%;
   padding: 8px 16px 16px 16px;
@@ -8,6 +14,10 @@
   align-items: flex-start;
   border-radius: 12px;
   background: #fff;
+  max-height: calc(100vh - 200px);
+  overflow: scroll;
+  margin-top: 42px;
+  margin-bottom: 77px;
 }
 
 .s-fl-item {
@@ -80,12 +90,90 @@
   width: 100%;
 }
 
-// .s-fl-footer {
-//   height: 112px;
-//   width: 100%;
-//   border-radius: 12px;
-//   background: #fff;
-//   box-shadow: 0px -4px 12px 0px rgba(56, 122, 251, 0.1);
-//   position: fixed;
-//   bottom: 0;
-// }
+.s-fl-top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  padding: 20px 16px;
+  gap: 12px;
+  border-radius: 12px;
+  background: #0b234d;
+}
+
+.s-fl-title {
+  color: #f7fafc;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.s-fl-close-btn {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: $--blue-2;
+
+  .ph-x {
+    font-size: 20px;
+    color: #ffffff;
+  }
+}
+
+.s-fl-footer {
+  height: 112px;
+  width: 100%;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px -4px 12px 0px rgba(56, 122, 251, 0.1);
+  position: fixed;
+  bottom: 0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.s-fl-footer-show-btn {
+  color: #f7fafc;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 100px;
+  background: #023365;
+  padding: 10px 12px;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s-fl-footer-clear-btn {
+  margin-top: 4px;
+  width: 100%;
+  height: 36px;
+  display: flex;
+  height: 36px;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  color: $--blue-3;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 20px;
+}

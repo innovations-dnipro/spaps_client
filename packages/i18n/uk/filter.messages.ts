@@ -72,4 +72,7 @@ export const filter_messages = {
   adults: 'Дорослі',
   children: 'Діти',
   price_range_per_hour: 'Діапазон цін / год.',
+  advanced_selection_filter: 'Розширений фільтр підбору',
+  show_search_result: 'Показати результати пошуку',
+  clear_filters: 'Очистити фільтри',
 };

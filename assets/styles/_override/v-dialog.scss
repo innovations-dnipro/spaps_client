@@ -2,6 +2,7 @@
 div.v-dialog > div.v-overlay__content {
   width: calc(100% - 32px);
   max-width: calc(100% - 32px);
-  margin: 16px;
+  margin: 0 16px;
   overflow-y: scroll !important;
+  max-height: 100%;
 }

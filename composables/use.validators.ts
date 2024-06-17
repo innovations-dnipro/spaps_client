@@ -142,7 +142,7 @@ export const useValidators = () => {
     return (value: number) => {
       if (value === undefined || value === null) return;
       return (
-        Number(value) > count ||
+        Number(value) >= count ||
         $i18n.t('validation_error_messages.min', { count })
       );
     };
@@ -152,7 +152,7 @@ export const useValidators = () => {
     return (value: number) => {
       if (value === undefined || value === null) return;
       return (
-        count < Number(value) ||
+        Number(value) <= count ||
         $i18n.t('validation_error_messages.max', { count })
       );
     };

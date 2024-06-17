@@ -6,20 +6,20 @@
     <div class="s-fb-main"></div>
   </div>
 
-  <VDialog v-model="filterStore.showsFilters">
-    <FilterList />
+  <VDialog v-model="dialogStore.showsFilterDialog">
+    <FilterList @close-dialog="toggleFilterDialog" />
   </VDialog>
 </template>
 <script setup lang="ts">
-import { useFilterStore } from '../stores/filter';
+import { useDialogStore } from '../stores/dialog';
 
-const filterStore = useFilterStore();
+const dialogStore = useDialogStore();
 
 const icon = computed(() => {
-  return filterStore.showsFilters ? 'ph-x' : 'ph-sliders-horizontal';
+  return dialogStore.showsFilterDialog ? 'ph-x' : 'ph-sliders-horizontal';
 });
 
 const toggleFilterDialog = () => {
-  filterStore.toggleFilters(!filterStore.showsFilters);
+  dialogStore.toggleFilterDialog(!dialogStore.showsFilterDialog);
 };
 </script>

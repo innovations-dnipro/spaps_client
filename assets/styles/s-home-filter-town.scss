@@ -1,5 +1,6 @@
 .s-hft {
   display: flex;
+  align-items: center;
   padding-top: 16px;
   margin-left: -4px;
   width: calc(100vw - 32px);
@@ -16,8 +17,16 @@
   display: flex;
   width: calc(100vw - 121px);
   overflow-x: scroll;
+  height: 34px;
+  padding: 1px;
 
   span.v-chip:first-child {
     margin-left: 0;
   }
+}
+
+.s-hft-outline {
+  outline-style: solid;
+  outline-color: $--blue-2;
+  outline-width: 1px;
 }

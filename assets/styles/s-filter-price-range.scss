@@ -8,6 +8,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  pointer-events: none;
 
   .v-text-field {
     width: 112px;

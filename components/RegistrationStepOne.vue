@@ -96,6 +96,8 @@ const formData: Ref<{}> = ref({
   surname: '',
   role: ENonAdminRole.CLIENT,
 });
+const route = useRoute();
+
 const isDisabled = computed(() => {
   return (
     isEmpty(formData.value.email) ||
@@ -136,4 +138,12 @@ const onSubmit = async () => {
   await emit('submit-user-data', formData.value);
   isLoading.value = false;
 };
+
+onMounted(() => {
+  const registersRentor = route.query?.user === 'rentor';
+
+  if (registersRentor) {
+    formData.value.role = ENonAdminRole.RENTOR;
+  }
+});
 </script>

@@ -51,6 +51,17 @@
   </div>
 </template>
 <script setup lang="ts">
+const props = defineProps({
+  adultNumber: {
+    type: [Number, null],
+    default: null,
+  },
+  childrenNumber: {
+    type: [Number, null],
+    default: null,
+  },
+});
+
 const emit = defineEmits(['updateGuestNumber']);
 const showsList: Ref<boolean> = ref(false);
 const adultNumber: Ref<number> = ref(0);
@@ -95,4 +106,24 @@ const onChildrenPlusClick = () => {
 
   updateGuestNumber();
 };
+
+watch(
+  () => props.adultNumber,
+  (propsAdultNumber) => {
+    adultNumber.value = propsAdultNumber;
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  () => props.childrenNumber,
+  (propsChildrentNumber) => {
+    childrenNumber.value = propsChildrentNumber;
+  },
+  {
+    immediate: true,
+  }
+);
 </script>

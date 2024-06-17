@@ -37,6 +37,9 @@
 const onAdDetailsButtonClick = () => {
   navigateTo({
     path: '/registration',
+    query: {
+      user: 'rentor',
+    },
   });
 };
 </script>

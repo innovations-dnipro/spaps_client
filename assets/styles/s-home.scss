@@ -597,6 +597,7 @@ span[class^='s-home-ad-details-line'] {
   border-radius: 12px;
   background: $--grey-3;
   position: relative;
+  overflow: hidden;
 }
 
 .s-home-reliability-title {
@@ -630,4 +631,12 @@ span[class^='s-home-ad-details-line'] {
   position: absolute;
   top: -16px;
   left: -18px;
+}
+
+.s-home-container-two-column-selected {
+  filter: brightness(1.5);
+  border-radius: 8px;
+  outline-style: solid;
+  outline-color: $--blue-2;
+  outline-width: 3px;
 }

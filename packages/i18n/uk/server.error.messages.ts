@@ -1,5 +1,4 @@
 export const server_error_messages = {
-  UNAUTHORIZED: 'Неавторизований запит.',
   NAME_ALREADY_EXISTS: 'Елемент із такою назвою вже існує.',
   PHONE_ALREADY_EXISTS: 'Елемент із цим телефоном уже існує.',
   EMAIL_ALREADY_EXISTS: 'Елемент із цією електронною адресою вже існує.',
@@ -14,7 +13,4 @@ export const server_error_messages = {
   NO_TOKEN: 'Ніхто не залогінений.',
   USER_NOT_FOUND: 'Користувача не знайдено.',
   EMAIL_NOT_FOUND: 'Електронна пошта не знайдена.',
-  WRONG_ROLE: 'Користувачі з вашою роллю не можуть заходити на цю сторінку.',
-  LOGGED_IN_USER_NOT_ALLOWED:
-    'Авторизований користувач не може потрапити на сторінки авторизації або реєстрації.',
 };

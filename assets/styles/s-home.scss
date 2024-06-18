@@ -81,46 +81,60 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  line-height: 0;
 }
 
 .s-home-container-two-column-one {
-  width: 84px;
-  height: 160px;
-  border-radius: 8px;
+  width: 25.92%;
+  height: auto;
+  border-radius: 10%;
 
   & img {
-    width: 84px;
-    height: 160px;
+    width: 100%;
+    height: auto;
+  }
+
+  & .s-home-container-two-column-title {
+    left: 9.52%;
+    bottom: 5%;
   }
 }
 
 .s-home-container-two-column-two {
-  width: 140px;
-  height: 160px;
-  border-radius: 8px;
+  width: 43.21%;
+  border-radius: 10%;
 
   & img {
-    width: 140px;
-    height: 160px;
+    width: 100%;
+    height: auto;
+  }
+
+  & .s-home-container-two-column-title {
+    left: 5.71%;
+    bottom: 5%;
   }
 }
 
 .s-home-container-two-column-three {
-  width: 84px;
-  height: 160px;
+  width: 25.92%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .s-home-container-two-column-three-block-one,
   .s-home-container-two-column-three-block-two {
-    width: 84px;
-    height: 76px;
+    width: 100%;
+    border-radius: 10%;
   }
 
   & img {
-    width: 84px;
-    height: 76px;
+    width: 100%;
+    height: auto;
+  }
+
+  & .s-home-container-two-column-title {
+    left: 9.52%;
+    bottom: 10.52%;
   }
 }
 
@@ -133,15 +147,22 @@
 
 .s-home-container-two-column-title {
   position: absolute;
-  left: 8px;
-  bottom: 8px;
   color: #fff;
   font-family: Inter;
-  font-size: 12px;
+  font-size: 75%;
   font-style: normal;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 100%;
   text-transform: capitalize;
+}
+
+.s-home-container-two-column-selected {
+  filter: brightness(1.5);
+
+  & img {
+    border: 3px solid $--blue-2;
+    border-radius: 20px;
+  }
 }
 
 .s-home-venue-card {
@@ -631,12 +652,4 @@ span[class^='s-home-ad-details-line'] {
   position: absolute;
   top: -16px;
   left: -18px;
-}
-
-.s-home-container-two-column-selected {
-  filter: brightness(1.5);
-  border-radius: 8px;
-  outline-style: solid;
-  outline-color: $--blue-2;
-  outline-width: 3px;
 }

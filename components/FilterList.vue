@@ -146,8 +146,6 @@ const updatePriceRange = ({
   priceFrom: number;
   priceTo: number;
 }) => {
-  console.log({ priceFrom, priceTo });
-
   filters.value = {
     ...filters.value,
     ...(isFinite(priceFrom) ? { priceFrom } : {}),

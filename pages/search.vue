@@ -195,7 +195,12 @@ const onRenderTypeButtonClick = (value: ESearchListRenderType) => {
 };
 
 onMounted(() => {
-  if (Object.keys(route.query).length > 0) {
+  const routeQuery = { ...route.query };
+  delete routeQuery.location;
+  delete routeQuery.venue_type;
+  const advancedFilterQueryKeys = Object.keys(routeQuery);
+
+  if (advancedFilterQueryKeys.length > 0) {
     setTimeout(() => {
       document
         .getElementById('result-venue-list-anchor')

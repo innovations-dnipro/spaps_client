@@ -146,8 +146,6 @@ const updatePriceRange = ({
   priceFrom: number;
   priceTo: number;
 }) => {
-  console.log({ priceFrom, priceTo });
-
   filters.value = {
     ...filters.value,
     ...(isFinite(priceFrom) ? { priceFrom } : {}),
@@ -206,6 +204,24 @@ const submitFilters = () => {
   });
 
   emit('close-dialog');
+
+  if (
+    newRouteQuery.venue_subtype ||
+    newRouteQuery.date_from ||
+    newRouteQuery.date_to ||
+    newRouteQuery.adult_number ||
+    newRouteQuery.children_number ||
+    newRouteQuery.price_from ||
+    newRouteQuery.price_to
+  ) {
+    console.log({ newRouteQuery });
+
+    setTimeout(() => {
+      document
+        .getElementById('result-venue-list-anchor')
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
 };
 
 onMounted(() => {

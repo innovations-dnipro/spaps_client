@@ -62,10 +62,13 @@ const items = [
 ];
 
 const onUpdate = () => {
+  const routeQuery = { ...route.query };
+  delete routeQuery.venue_subtype;
+
   navigateTo({
     path: '/search',
     query: {
-      ...route.query,
+      ...routeQuery,
       venue_type: selected.value,
     },
   });

@@ -98,20 +98,28 @@ const cancelTownSelect = () => {
   toggleDialog();
 };
 const saveTownSelect = () => {
+  const routeQuery = { ...route.query };
+  delete routeQuery.venue_type;
+  delete routeQuery.location;
+  const advancedFilterKeys = Object.keys(routeQuery);
   currentTown.value = $i18n.t(`location_messages.${selectedTown.value}`);
   toggleDialog();
-
-  document
-    .getElementById('result-venue-list-anchor')
-    ?.scrollIntoView({ behavior: 'smooth' });
 
   navigateTo({
     path: '/search',
     query: {
-      ...route.query,
+      ...(isSearchPath.value ? { ...route.query } : {}),
       location: (selectedTown.value || '').toLocaleLowerCase(),
     },
   });
+
+  if (advancedFilterKeys.length) {
+    setTimeout(() => {
+      document
+        .getElementById('result-venue-list-anchor')
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
 };
 
 onMounted(() => {

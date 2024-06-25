@@ -2,9 +2,9 @@
   <div class="s-hft">
     <VChip
       variant="outlined"
-      @click="onClick(ALL_UKAINE)"
+      @click="onClick(ELocation.ALL_UKAINE)"
       :class="{
-        's-hft-outline': selectedTown === ALL_UKAINE,
+        's-hft-outline': selectedTown === ELocation.ALL_UKAINE,
       }"
     >
       {{ $t('home_messages.ukraine') }}
@@ -25,24 +25,23 @@
 <script lang="ts" setup>
 import { ELocation } from '@spaps/enums/location';
 
-const ALL_UKAINE = 'ALL_UKAINE';
 const route = useRoute();
-const selectedTown = ref(ALL_UKAINE);
+const selectedTown = ref(ELocation.ALL_UKAINE);
 const townList: Ref<Array<string>> = computed(() => {
   return (Object.values(ELocation) as string[]).slice(1, 10);
 });
 
 const onClick = (town: string) => {
   if (selectedTown.value === town) {
-    if (town === ALL_UKAINE) {
+    if (town === ELocation.ALL_UKAINE) {
       return;
     }
-    selectedTown.value = ALL_UKAINE;
+    selectedTown.value = ELocation.ALL_UKAINE;
     navigateTo({
       path: '/',
       query: {
         ...route.query,
-        location: ALL_UKAINE.toLocaleLowerCase(),
+        location: ELocation.ALL_UKAINE,
       },
     });
 
@@ -55,7 +54,7 @@ const onClick = (town: string) => {
       path: '/',
       query: {
         ...route.query,
-        location: town.toLocaleLowerCase(),
+        location: town,
       },
     });
   }
@@ -67,7 +66,7 @@ const onClick = (town: string) => {
 
 onMounted(() => {
   if (route.query.location) {
-    selectedTown.value = (route.query.location || '').toUpperCase();
+    selectedTown.value = route.query.location;
   }
 });
 </script>

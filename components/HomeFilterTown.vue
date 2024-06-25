@@ -29,7 +29,7 @@ const ALL_UKAINE = 'ALL_UKAINE';
 const route = useRoute();
 const selectedTown = ref(ALL_UKAINE);
 const townList: Ref<Array<string>> = computed(() => {
-  return (Object.values(ELocation) as string[]).slice(0, 9);
+  return (Object.values(ELocation) as string[]).slice(1, 10);
 });
 
 const onClick = (town: string) => {

@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
+import type { Nullable } from '../packages/core/types/nullable';
 
 export const useUserStore = defineStore('userData', () => {
-  const user = ref(null);
+  const user: Ref<Nullable<{}>> = ref(null);
 
-  const updateUser = (userData) => {
+  const updateUser = (userData: object) => {
     user.value = userData;
   };
 

@@ -115,4 +115,20 @@ export default defineNuxtConfig({
     '/profile-rentor': { ssr: false },
     '/owners-office': { ssr: false },
   },
+  googleFonts: {
+    families: {
+      Roboto: true,
+    },
+  },
+  app: {
+    head: {
+      script: [
+        {
+          src: `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`,
+          async: true,
+          defer: true,
+        },
+      ],
+    },
+  },
 });

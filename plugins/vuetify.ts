@@ -9,6 +9,7 @@ import {
   VPagination,
   VRangeSlider,
   VSelect,
+  VTextarea,
   VTextField,
 } from 'vuetify/components';
 import { VDateInput } from 'vuetify/labs/VDateInput';
@@ -31,6 +32,7 @@ export default defineNuxtPlugin((app) => {
       VPagination,
       VRangeSlider,
       VSelect,
+      VTextarea,
       VTextField,
     },
     theme: {

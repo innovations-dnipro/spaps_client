@@ -37,13 +37,18 @@
           maxLengthValidator(formData.password, 15),
         ]"
         :readonly="isLoading"
-        class="mb-6"
+        class="mb-2"
         color="primary"
         hide-details="auto"
         :append-inner-icon="isPasswordVisible ? 'ph-eye ph' : 'ph-eye-slash ph'"
         :type="isPasswordVisible ? 'text' : 'password'"
         @click:append-inner="isPasswordVisible = !isPasswordVisible"
       ></v-text-field>
+      <div class="s-login-forgot-password">
+        <a class="s-login-forgot-password-label" href="/password-reset">{{
+          $t('login_messages.forgot_password')
+        }}</a>
+      </div>
       <button
         :disabled="isDisabled"
         class="s-login-btn"

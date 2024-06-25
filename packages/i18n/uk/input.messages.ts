@@ -24,4 +24,7 @@ export const input_messages = {
   new_password: 'Новий пароль',
   from: 'Від',
   until: 'До',
+  complex_name: 'Назва комплексу',
+  address: 'Адреса',
+  complex_description: 'Опис комплексу',
 };

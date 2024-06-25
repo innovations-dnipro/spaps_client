@@ -141,6 +141,16 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     return axiosInstance.put(EndpointsEnum.Authorization.NewPassword, data);
   };
 
+  const changeLocation = ({
+    params,
+  }: {
+    params: IParams;
+  }): ServiceResponseType<number> => {
+    return axiosInstance.get(
+      EndpointsEnum.Authorization.ChangeLocation(params)
+    );
+  };
+
   return {
     changeEmail,
     confirmEmailChangeCode,
@@ -158,5 +168,6 @@ export const useAuthorizationService = (axiosInstance: AxiosInstance) => {
     confirmPhoneChangeCode,
     postCurrentPassword,
     putNewPassword,
+    changeLocation,
   };
 };

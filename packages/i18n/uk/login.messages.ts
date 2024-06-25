@@ -4,4 +4,5 @@ export const login_messages = {
   continue: 'Продовжити',
   you_have_no_account: 'Не маєте акаунту?',
   register: 'Зареєструватися',
+  forgot_password: `Не пам'ятаю пароль`,
 };

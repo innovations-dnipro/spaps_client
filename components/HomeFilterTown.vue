@@ -7,7 +7,7 @@
         's-hft-outline': selectedTown === ALL_UKAINE,
       }"
     >
-      {{ $t('home_messages.all_ukraine') }}
+      {{ $t('home_messages.ukraine') }}
     </VChip>
     <div class="s-hft-scrollable">
       <VChip

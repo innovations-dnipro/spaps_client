@@ -16,6 +16,12 @@
   align-items: center;
   border-radius: 8px;
   background: $--grey-3;
+
+  & i.ph-user-circle-dashed {
+    font-size: 60px;
+    flex-shrink: 0;
+    color: $--blue-grey;
+  }
 }
 
 .s-profile-avatar-btn {

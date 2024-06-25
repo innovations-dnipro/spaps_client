@@ -5,11 +5,6 @@
   margin-left: -4px;
   width: calc(100vw - 32px);
   max-width: calc(100vw - 32px);
-
-  & > span.v-chip.v-chip--variant-outlined {
-    min-width: 105px !important;
-    width: 105px !important;
-  }
 }
 
 .s-hft-scrollable {

@@ -1,5 +1,5 @@
 <template>
-  <div class="s-profile-info-title mb-1 mt-4">
+  <div class="s-profile-info-title mb-1">
     {{ $t('profile_safety_privacy_messages.safety_and_privacy') }}
   </div>
   <div class="s-profile-settings-item">

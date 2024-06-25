@@ -58,7 +58,13 @@
     </v-dialog>
 
     <div class="s-profile-avatar-img-wrapper">
-      <img :src="savedImageSrc" alt="Avatar" class="s-profile-avatar-img" />
+      <img
+        :src="savedImageSrc"
+        alt="Avatar"
+        class="s-profile-avatar-img"
+        v-if="savedFileId"
+      />
+      <i class="ph-duotone ph-user-circle-dashed" v-else></i>
     </div>
     <div class="s-profile-avatar-right-container">
       <div class="s-profile-avatar-btn" @click="toggleDialog">

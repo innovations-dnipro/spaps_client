@@ -5,7 +5,7 @@ export const home_messages = {
     дізналося більше людей`,
   add_venue: `Додати об’єкт до катологу`,
   popular_offers: 'Популярні пропозиції парних за містами',
-  all_ukraine: 'Вся Україна',
+  ukraine: 'Україна',
   up_to_guests: `до {amount} чол.`,
   from: 'Від',
   detailed_metrics: 'Детальні метрики за вашим оголошенням',

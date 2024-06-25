@@ -1,5 +1,5 @@
 <template>
-  <div class="s-profile-info-title mb-1 mt-4">
+  <div class="s-profile-info-title mb-1">
     {{ $t('profile_personalization_messages.personalization') }}
   </div>
   <div class="s-profile-settings-item">

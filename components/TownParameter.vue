@@ -62,13 +62,20 @@
 import { ELocation } from '@spaps/enums/location';
 
 const $i18n = useI18n();
-const route = useRoute();
 const initialTown = $i18n.t(`location_messages.${ELocation.KYIV}`);
-const isSearchPath = ref(route.path === '/search');
-const currentTown = ref(initialTown);
+const currentTown = ref(initialTown); //NOTE: location value outside town selection dialog
 const selectedTown = ref(ELocation.KYIV);
 const dialog = ref(false);
 const isTownListShort = ref(true);
+
+const props = defineProps({
+  town: {
+    type: String,
+    default: null,
+  },
+});
+
+const emit = defineEmits(['update-town-value']);
 
 const fullTownList: Ref<Array<string>> = computed(() => {
   return Object.values(ELocation);
@@ -98,40 +105,19 @@ const cancelTownSelect = () => {
   toggleDialog();
 };
 const saveTownSelect = () => {
-  const routeQuery = { ...route.query };
-  delete routeQuery.venue_type;
-  delete routeQuery.location;
-  const advancedFilterKeys = Object.keys(routeQuery);
   currentTown.value = $i18n.t(`location_messages.${selectedTown.value}`);
   toggleDialog();
 
-  navigateTo({
-    path: '/search',
-    query: {
-      ...(isSearchPath.value ? { ...route.query } : {}),
-      location: (selectedTown.value || '').toLocaleLowerCase(),
-    },
-  });
-
-  if (advancedFilterKeys.length) {
-    setTimeout(() => {
-      document
-        .getElementById('result-venue-list-anchor')
-        ?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
+  emit('update-town-value', selectedTown.value);
 };
 
-onMounted(() => {
-  if (isSearchPath.value && route.query?.location) {
-    const town = (route.query?.location || '').toUpperCase();
-
-    selectedTown.value = town;
-    currentTown.value = $i18n.t(`location_messages.${town}`);
-
-    document
-      .getElementById('result-venue-list-anchor')
-      ?.scrollIntoView({ behavior: 'smooth' });
+watch(
+  () => props.town,
+  (propsTown: string) => {
+    if (props.town) {
+      selectedTown.value = propsTown;
+      currentTown.value = $i18n.t(`location_messages.${propsTown}`);
+    }
   }
-});
+);
 </script>

@@ -1,22 +1,17 @@
 .s-fl {
   height: 100vh;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .s-fl-main {
-  min-width: 328px;
   width: 100%;
-  padding: 8px 16px 16px 16px;
+  height: calc(100% - 100px);
+  padding: 78px 16px 26px 16px;
   justify-content: center;
   align-items: flex-start;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   background: #fff;
-  max-height: calc(100vh - 260px);
   overflow: scroll;
-  margin-bottom: 35px;
 }
 
 .s-fl-item {
@@ -98,8 +93,8 @@
   align-items: center;
   padding: 20px 16px;
   gap: 12px;
-  border-radius: 12px;
-  background: #0b234d;
+  border-radius: 12px 12px 0 0;
+  background: $--blue-4;
 }
 
 .s-fl-title {

@@ -11,11 +11,9 @@
 
     <div class="s-fl-main">
       <FilterVenueSubtype
-        v-if="venueType"
-        :venueType="(venueType as EVenueType)"
+        v-if="props.venueType"
+        :venueType="(props.venueType as EVenueType)"
         :venueSubtypes="(filters.venueSubTypes as [])"
-        :queryParams="queryParams"
-        :path="route.path"
         @updateSubtype="updateSubtype"
       />
       <FilterDate
@@ -48,8 +46,6 @@
 <script setup lang="ts">
 import { EVenueType } from '../packages/core/enums/venue.type';
 import type { Nullable } from '../packages/core/types/nullable';
-import { isEmptyArray } from '../packages/utils/is.empty.array';
-import { isNullOrUndefined } from '../packages/utils/is.null.or.undefined';
 import { useDialogStore } from '../stores/dialog';
 import { formatDateToDateTime } from '../packages/utils/format.date';
 import { VenueSubtype } from '../packages/values/venue.subtype';
@@ -65,6 +61,12 @@ interface IFilters {
   priceTo: Nullable<number>;
 }
 
+const props = defineProps({
+  venueType: {
+    type: String,
+    default: null,
+  },
+});
 const filtersInitialValues = {
   venueSubTypes: null,
   dateFrom: null,
@@ -76,33 +78,11 @@ const filtersInitialValues = {
 };
 const route = useRoute();
 const dialogStore = useDialogStore();
-const queryParams = computed(() => {
-  return route.query;
-});
 const filters: Ref<IFilters> = ref({
   ...filtersInitialValues,
 });
-const venueType: Ref<Nullable<keyof EVenueType>> = ref(null);
-const emit = defineEmits(['close-dialog']);
+const emit = defineEmits(['update-advanced-filters']);
 
-const searchVenues = () => {
-  const searchFilters: Partial<IFilters> = {};
-
-  Object.keys(filters.value).forEach((filterKey) => {
-    const key: keyof IFilters = filterKey as keyof IFilters;
-    const isArray: boolean = Array.isArray(filters.value[key]);
-
-    if (isArray && !isEmptyArray(filters.value[key])) {
-      searchFilters[key] = filters.value[key] as any;
-      return;
-    }
-    if (!isArray && !isNullOrUndefined(filters.value[key])) {
-      searchFilters[key] = filters.value[key] as any;
-    }
-  });
-
-  console.dir(searchFilters);
-};
 const updateSubtype = ({
   selectedSubtypes,
 }: {
@@ -112,8 +92,6 @@ const updateSubtype = ({
     ...filters.value,
     venueSubTypes: selectedSubtypes,
   };
-
-  searchVenues();
 };
 const updateDate = ({ dateFrom, dateTo }: { dateFrom: Date; dateTo: Date }) => {
   filters.value = {
@@ -121,8 +99,6 @@ const updateDate = ({ dateFrom, dateTo }: { dateFrom: Date; dateTo: Date }) => {
     dateFrom,
     dateTo,
   };
-
-  searchVenues();
 };
 const updateGuestNumber = ({
   adultNumber,
@@ -136,8 +112,6 @@ const updateGuestNumber = ({
     adultNumber,
     childrenNumber,
   };
-
-  searchVenues();
 };
 const updatePriceRange = ({
   priceFrom,
@@ -151,77 +125,67 @@ const updatePriceRange = ({
     ...(isFinite(priceFrom) ? { priceFrom } : {}),
     ...(isFinite(priceTo) ? { priceTo } : {}),
   };
-
-  searchVenues();
 };
 const toggleDialog = () => {
-  emit('close-dialog');
+  emit('update-advanced-filters');
 };
 const clearFilters = () => {
   filters.value = { ...filtersInitialValues };
 };
 const submitFilters = () => {
-  const newRouteQuery = { ...route.query };
+  const addsVenueSubtypes =
+    Array.isArray(filters.value.venueSubTypes) &&
+    filters.value.venueSubTypes.length;
 
-  Array.isArray(filters.value.venueSubTypes) &&
-  filters.value.venueSubTypes.length
-    ? (newRouteQuery.venue_subtype = filters.value.venueSubTypes.join(','))
-    : delete newRouteQuery.venue_subtype;
+  const newAdvancedFilterRouteQuery = {
+    ...(addsVenueSubtypes
+      ? {
+          venue_subtype: filters.value.venueSubTypes?.join(','),
+        }
+      : {}),
 
-  filters.value.dateFrom
-    ? (newRouteQuery.date_from = formatDateToDateTime({
-        value: filters.value.dateFrom,
-      }))
-    : delete newRouteQuery.date_from;
+    ...(filters.value.dateFrom
+      ? {
+          date_from: formatDateToDateTime({
+            value: filters.value.dateFrom,
+          }),
+        }
+      : {}),
 
-  filters.value.dateTo
-    ? (newRouteQuery.date_to = formatDateToDateTime({
-        value: filters.value.dateTo,
-      }))
-    : delete newRouteQuery.date_to;
+    ...(filters.value.dateTo
+      ? {
+          date_to: formatDateToDateTime({
+            value: filters.value.dateTo,
+          }),
+        }
+      : {}),
 
-  filters.value.adultNumber
-    ? (newRouteQuery.adult_number = filters.value.adultNumber)
-    : delete newRouteQuery.adult_number;
+    ...(filters.value.adultNumber
+      ? {
+          adult_number: filters.value.adultNumber,
+        }
+      : {}),
 
-  filters.value.childrenNumber
-    ? (newRouteQuery.children_number = filters.value.childrenNumber)
-    : delete newRouteQuery.children_number;
+    ...(filters.value.childrenNumber
+      ? {
+          children_number: filters.value.childrenNumber,
+        }
+      : {}),
 
-  filters.value.priceFrom
-    ? (newRouteQuery.price_from = filters.value.priceFrom)
-    : delete newRouteQuery.price_from;
+    ...(filters.value.priceFrom
+      ? {
+          price_from: filters.value.priceFrom,
+        }
+      : {}),
 
-  filters.value.priceTo
-    ? (newRouteQuery.price_to = filters.value.priceTo)
-    : delete newRouteQuery.price_to;
+    ...(filters.value.priceTo
+      ? {
+          price_to: filters.value.priceTo,
+        }
+      : {}),
+  };
 
-  navigateTo({
-    path: '/search',
-    query: {
-      ...newRouteQuery,
-    },
-  });
-
-  emit('close-dialog');
-
-  if (
-    newRouteQuery.venue_subtype ||
-    newRouteQuery.date_from ||
-    newRouteQuery.date_to ||
-    newRouteQuery.adult_number ||
-    newRouteQuery.children_number ||
-    newRouteQuery.price_from ||
-    newRouteQuery.price_to
-  ) {
-    console.log({ newRouteQuery });
-
-    setTimeout(() => {
-      document
-        .getElementById('result-venue-list-anchor')
-        ?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
+  emit('update-advanced-filters', newAdvancedFilterRouteQuery);
 };
 
 onMounted(() => {
@@ -236,9 +200,6 @@ onMounted(() => {
     (route.query.date_to || '').match(YYYY_MM_DD) &&
     new Date(`${route.query.date_to} 23:59:59:999`);
 
-  if (route.query.venue_type) {
-    venueType.value = route.query?.venue_type.split(',')[0];
-  }
   if (isFinite(priceFrom) && priceFrom >= 0 && priceFrom <= 10000) {
     filters.value.priceFrom = priceFrom;
   }
@@ -254,10 +215,15 @@ onMounted(() => {
     filters.value.priceTo = null;
   }
 
-  if (route.query.venue_type && route.query.venue_subtype) {
-    const venueType: EVenueType = route.query.venue_type;
+  if (
+    route.path === '/search' &&
+    route.query.venue_type &&
+    route.query.venue_subtype
+  ) {
     const venueSubtypes: Array<string> = route.query.venue_subtype.split(',');
-    const possibleSubtypes = VenueSubtype[venueType] as Array<string>;
+    const possibleSubtypes = VenueSubtype?.[
+      props.venueType as EVenueType
+    ] as Array<string>;
 
     const attestedVenueSubtypes = venueSubtypes.filter((subtype: string) => {
       return possibleSubtypes.includes(subtype);

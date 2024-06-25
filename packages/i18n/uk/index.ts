@@ -1,3 +1,5 @@
+import { complex_messages } from './complex.messages';
+import { rentor_properties_messages } from './rentor.properties.messages';
 import { sort_messages } from './sort.messages';
 import { footer_messages } from './footer.messages';
 import { home_messages } from './home.message';
@@ -27,6 +29,7 @@ import { town_param_messages } from './town.param.messages';
 
 export const uk = {
   back_messages,
+  complex_messages,
   date_input_messages,
   email_change_messages,
   filter_messages,
@@ -46,6 +49,7 @@ export const uk = {
   profile_rentor_messages,
   profile_safety_privacy_messages,
   registration_messages,
+  rentor_properties_messages,
   sauna_search_messages,
   server_error_messages,
   sort_messages,

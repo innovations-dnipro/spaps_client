@@ -25,11 +25,18 @@
 </template>
 <script setup lang="ts">
 import { EVenueType } from '@spaps/enums/venue.type';
+import type { Nullable } from '../packages/core/types/nullable';
+
+const props = defineProps({
+  venueType: {
+    type: String,
+    default: null,
+  },
+});
 
 const $i18n = useI18n();
-const route = useRoute();
-const emit = defineEmits(['show-filter-button']);
-const selected = ref(null);
+const emit = defineEmits(['update-venue-type-value']);
+const selected: Ref<Nullable<string>> = ref(null);
 const items = [
   {
     title: $i18n.t(`filter_messages.${EVenueType.pool}`),
@@ -62,25 +69,20 @@ const items = [
 ];
 
 const onUpdate = () => {
-  const routeQuery = { ...route.query };
-  delete routeQuery.venue_subtype;
-
-  navigateTo({
-    path: '/search',
-    query: {
-      ...routeQuery,
-      venue_type: selected.value,
-    },
-  });
-
-  emit('show-filter-button');
+  emit('update-venue-type-value', selected.value);
 };
 
+watch(
+  () => props.venueType,
+  (propsVenueType) => {
+    if (selected.value !== propsVenueType) {
+      selected.value = propsVenueType;
+    }
+  }
+);
 onMounted(() => {
-  const isSearchPath = route.path === '/search';
-
-  if (isSearchPath && route.query?.venue_type) {
-    selected.value = route.query?.venue_type;
+  if (props.venueType) {
+    selected.value = props.venueType;
   }
 });
 </script>

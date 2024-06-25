@@ -1,6 +1,7 @@
 import { ELocation } from './../../core/enums/location';
 
 export const location_messages = {
+  [ELocation.ALL_UKRAINE]: 'Вся Україна',
   [ELocation.KYIV]: 'Київ',
   [ELocation.CHERKASY]: 'Черкаси',
   [ELocation.CHERNIHIV]: 'Чернігів',

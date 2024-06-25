@@ -3,12 +3,11 @@
     <div
       class="s-fl-item-header"
       :class="{ 's-fl-item-header-open': showsList }"
-      @click="onCaretClick"
     >
       <span class="s-fl-item-title">{{
         $t('filter_messages.price_range_per_hour')
       }}</span>
-      <div class="s-fl-item-icon">
+      <div class="s-fl-item-icon" @click="onCaretClick">
         <i class="ph" :class="icon"></i>
       </div>
     </div>

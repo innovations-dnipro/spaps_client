@@ -174,7 +174,7 @@ const onSaveButtonClick = async () => {
   );
 
   if (postComplexResponse?.id) {
-    toast.success($i18n.t('complex_messages.complex_was_created'));
+    toast.success($i18n.t('complex_messages.complex_was_saved'));
     onCancelButtonClick();
   }
 };

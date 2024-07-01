@@ -9,5 +9,5 @@ export const complex_messages = {
   cancel: 'Скасувати',
   save_changes: 'Зберегти зміни',
   no_name: 'Без назви',
-  complex_was_created: 'Комплекс успішно було створено.',
+  complex_was_saved: 'Комплекс успішно було збережено.',
 };

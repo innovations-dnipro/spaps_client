@@ -92,7 +92,7 @@ const onSubmit = async () => {
 
   await asyncGlobalSpinner(
     api.RentorService.updateRentor({
-      params: { rentorId },
+      params: { rentorId: String(rentorId) },
       data: {
         firstName: formData.value.firstName,
         lastName: formData.value.lastName,

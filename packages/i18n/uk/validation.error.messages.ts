@@ -20,4 +20,8 @@ export const validation_error_messages = {
   min: 'Мінімум {count}.',
   fileSizeMax: 'Розмір файлу не має перевищувати {size} Мб.',
   fileType: 'Дозволені лише наступні типи файлів: {types}.',
+  fileSizeMaxInArray:
+    'Розмір жодного файлу не має перевищувати {size} Мб. Наступний файл перевищує допустимий розмір: {name}',
+  fileTypeInArray:
+    'Дозволені лише наступні типи файлів: {types}. Наступний файл іншого формату: {name}',
 };

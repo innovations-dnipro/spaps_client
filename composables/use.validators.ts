@@ -40,9 +40,26 @@ export const useValidators = () => {
 
   //NOTE: File size validator
   const fileSizeValidator = (fileData: File | File[], size: number) => {
-    const file = Array.isArray(fileData) ? fileData[0] : fileData;
-    const fileSize: number = file?.size;
+    const isArray = Array.isArray(fileData);
     const mbSize = size / 1000000;
+
+    if (isArray) {
+      const wrongSizeFile: File | undefined = (fileData as File[]).find(
+        (item: File) => {
+          return item?.size > size;
+        }
+      );
+
+      return (
+        !wrongSizeFile ||
+        $i18n.t('validation_error_messages.fileSizeMaxInArray', {
+          size: mbSize,
+          name: wrongSizeFile.name,
+        })
+      );
+    }
+
+    const fileSize: number = fileData?.size;
 
     return (
       size >= fileSize ||
@@ -52,12 +69,27 @@ export const useValidators = () => {
 
   //NOTE: File type validator
   const fileTypeValidator = (fileData: File | File[], types: string[]) => {
-    const file = Array.isArray(fileData) ? fileData[0] : fileData;
-    const fileType: string = file?.type;
+    const isArray = Array.isArray(fileData);
     const typesString: string = types.join(', ');
 
+    if (isArray) {
+      const wrongTypeFile: File | undefined = (fileData as File[]).find(
+        (item: File) => {
+          return !(types || []).includes(item.type);
+        }
+      );
+
+      return (
+        !wrongTypeFile ||
+        $i18n.t('validation_error_messages.fileTypeInArray', {
+          types: typesString,
+          name: wrongTypeFile.name,
+        })
+      );
+    }
+
     return (
-      (types || []).includes(fileType) ||
+      (types || []).includes(fileData?.type) ||
       $i18n.t('validation_error_messages.fileType', { types: typesString })
     );
   };

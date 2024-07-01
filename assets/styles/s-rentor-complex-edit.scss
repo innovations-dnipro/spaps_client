@@ -6,10 +6,15 @@
   position: relative;
 
   .s-tabs {
-    margin: 16px 0;
+    margin: 0 0 16px 0;
     overflow-x: scroll;
     max-width: calc(100vw - 32px);
   }
+}
+
+.s-rce-general {
+  width: 100%;
+  height: 100%;
 }
 
 .s-rce-general-form {
@@ -26,7 +31,194 @@
   line-height: 24px;
 }
 
-.s-rce-venue-photos-line-2 {
+.s-rce-venue-photos-section-2 {
   width: 100%;
   display: flex;
+}
+
+.s-rce-venue-photos-section-2-left-block {
+  flex-grow: 1;
+  min-width: 170px;
+  color: #606c81;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  padding-right: 8px;
+}
+
+.s-rce-venue-photos-section-2-upload-btn {
+  display: flex;
+  min-width: 151px;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid #606c81;
+  background: #f7fafc;
+  flex-shrink: 0;
+}
+
+.s-rce-venue-photos-section-2-upload-btn-label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-section-clamp: 1;
+  overflow: hidden;
+  color: #061b40;
+  text-overflow: ellipsis;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.s-rce-venue-photos-section-2-upload-input {
+  width: 100%;
+  padding: 4px 0;
+
+  label {
+    display: none !important;
+  }
+
+  .v-field__overlay {
+    display: none !important;
+  }
+
+  .v-field__outline {
+    display: none !important;
+  }
+
+  .v-field__input {
+    display: none !important;
+  }
+
+  .v-input__details {
+    padding: 0 !important;
+  }
+
+  .v-input__prepend,
+  .v-field__append-inner,
+  .v-field__clearable {
+    display: none !important;
+  }
+}
+
+.s-rce-venue-photos-section-2-pending-file-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s-rce-venue-photos-section-2-pending-file-list-item {
+  margin-top: 4px;
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  background: #e9edf2;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: #606c81;
+    width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i.ph {
+      font-size: 20px;
+      color: #606c81;
+    }
+  }
+}
+
+.s-rce-venue-photos-section-3 {
+  margin-top: 12px;
+  width: 100%;
+  height: 248px;
+  padding: 16px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px dashed #c1cedb;
+}
+
+.s-rce-venue-photos-section-3-label {
+  display: flex;
+
+  i.ph {
+    color: #606c81;
+    font-size: 24px;
+  }
+
+  span {
+    margin-left: 8px;
+    color: #606c81;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px;
+  }
+}
+
+.s-rce-venue-photos-section-4 {
+  display: flex;
+  margin-top: 28px;
+}
+
+.s-rce-venue-photos-section-4-cancel-btn {
+  display: flex;
+  min-width: 131px;
+  height: 36px;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  border: 1px solid #061b40;
+
+  span {
+    color: #061b40;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 20px;
+  }
+}
+
+.s-rce-venue-photos-section-4-save-btn {
+  height: 36px;
+  min-width: 189px;
+  margin-left: 8px;
+  display: flex;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: #023365;
+
+  span {
+    color: #f7fafc;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
 }

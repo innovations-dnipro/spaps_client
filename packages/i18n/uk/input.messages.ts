@@ -27,4 +27,6 @@ export const input_messages = {
   complex_name: 'Назва комплексу',
   address: 'Адреса',
   complex_description: 'Опис комплексу',
+  region: 'Область',
+  location: 'Населений пункт',
 };

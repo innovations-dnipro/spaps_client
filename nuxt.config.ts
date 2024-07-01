@@ -111,9 +111,10 @@ export default defineNuxtConfig({
   plugins: ['~/plugins/vuetify', '~/plugins/loader' /*'~/plugins/axios'*/],
   routeRules: {
     // '/profile/**': { ssr: false },
+    '/owners-office': { ssr: false },
     '/profile': { ssr: false },
     '/profile-rentor': { ssr: false },
-    '/owners-office': { ssr: false },
+    '/rentor-complex-edit': { ssr: false },
   },
   googleFonts: {
     families: {

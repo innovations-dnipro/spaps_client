@@ -41,3 +41,12 @@ export interface IPostAvatar {}
 export interface IPostPassword {
   password: string;
 }
+
+export interface IPostComplex {
+  name: string;
+  region: string;
+  location: string;
+  address: string;
+  description: string;
+  complexPhotos: File[];
+}
